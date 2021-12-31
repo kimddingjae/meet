@@ -1,0 +1,51 @@
+body {background: #E0EAFC;  /* fallback for old browsers */
+     background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+     background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     
+}
+
+
+.myButton {
+  
+	box-shadow: 3px 4px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:20px;
+	padding:100px 100px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+#wrapper{
+	display: flex;
+	justify-content: center;
+	margin-top: 10%;
+}
+#wrapper1{
+	display: flex;
+	justify-content: center;
+	margin-top: 3%;
+}
+
+@media (max-width: 768px) {
+	.myButton{
+		padding: 65px 50px;
+	}
+	#wrapper{
+		margin-top: 50%;
+	}
+
+}

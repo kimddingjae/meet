@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <title>장부</title>
+    <style>
+        #a {
+            text-align: center;
+            width: 100%;
+            overflow: hidden;
+            height: 640px;
+        }
+
+        #i {
+            zoom: 0.8;
+            -moz-transform: scale(0.8);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(0.8);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(0.8);
+            -webkit-transform-origin: 0 0;
+            position: relative;
+            top: -14px;
+            width: 120%;
+            height: 640px;
+            margin-top: -10px;
+            margin-bottom: -1%;
+            border: none;
+        }
+
+        #h {
+            display: block;
+        }
+
+        #j {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            #i {
+                zoom: 1.2;
+                -moz-transform: scale(1.2);                
+                -o-transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                width: 69.8%;
+                height: 430px;
+                margin-right: 13%;
+            }
+
+            #h {
+                display: none;
+            }
+
+            #j {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="sheet.html">장부</a></li>
+                <li><a href="index.html">달력</a></li>
+                <li><a href="photo.html">사진들</a></li>
+            </ul>
+            <a id="pull" href="#"></a>
+        </nav>
+    </div>
+    <h3 id="h" style="text-align: center;">카카오뱅크 3333-22-0492563</h3>
+    <h1 id="j" style="text-align: center;">카카오뱅크 3333-22-0492563</h1>
+    <div id="a">
+        <iframe id="i"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVeFh5EtAK0TDPhsUuscd5cFfCqXbuMwcavev1QTiLiPpUiByPcK0ExZtfKjzVUpJzsDLYaPJLAr-4/pubhtml?widget=true&amp;headers=false"></iframe>
+    </div>
+
+</body>
+
+</html>
