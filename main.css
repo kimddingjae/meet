@@ -143,10 +143,10 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc {
   /* reset */
 }
-.fc-daygrid-day.fc-day.fc-day-sun {
+.fc-day-sun {
   color: #ff0000;
 } /* 일요일 */
-.fc-daygrid-day.fc-day.fc-day-sat {
+.fc-day-sat {
   color: #0000ff;
 } /* 토요일 */
 .fc .fc-button {
