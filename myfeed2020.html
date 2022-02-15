@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+
+<link rel="stylesheet" type="text/css" href="./myfeed2020.css"></link>
+</head>
+<body>
+<div id="wrap">
+<div id="instagram-container">
+<h1>My Instagram Feed 2020</h1>
+<div id="instagram-myfeed">-- 여기에 인스타 그램 피드 삽입 --</div>
+<script>
+var api_endpoint = "https://v1.nocodeapi.com/ddingjae/instagram/xBxtcnCJBOAJgpIC?cacheTime=900";
+
+$.get( api_endpoint, function( json ) {
+	
+	var instabanner = $('#instagram-myfeed');
+	var outputHtml = "";
+	outputHtml += '<ul class="myfeed">';
+	
+	var limit = 12; 
+	var myfeed = json.data;
+	var cnt=0;
+	
+	for (var i = 0; i < limit; i++) {			
+		if(myfeed[i]){		
+			outputHtml += '<li>';		
+			
+			if(myfeed[i].media_type == "VIDEO"){
+				outputHtml += '<i class="fas fa-video"></i><a target="_blank" href="' + myfeed[i].permalink+'" style="background-image: url('+myfeed[i].thumbnail_url+')"></a>';
+			}else {
+				outputHtml += '<a target="_blank" href="' + myfeed[i].permalink+'" style="background-image: url('+myfeed[i].media_url+')"></a>';	
+			}
+			outputHtml += '</li>';
+			cnt++;
+			if(cnt % 3 == 0){
+				outputHtml += '</ul>';
+				outputHtml += '<ul class="myfeed" + cnt>';
+			}
+		}
+	}	
+	outputHtml += "</ul>";		
+	instabanner.html( outputHtml );
+	
+});//end get
+</script>
+<style type="text/css">
+.fa-video {position:absolute !important;display:block;top:5%;right:5%;z-index:999;width:20px;height:20px;font-size:20px !important;color:#fff !important;opacity:0.9;}
+</style>
+</div><!--end instagram-container-->
+</div><!--end wrap-->
+</body>
+</html>

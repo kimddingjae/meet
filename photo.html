@@ -2,26 +2,148 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="menu.css">
-     <title>사진들</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+    
+    <title>달력</title>
+    <style>
+        /* PC */
+        @media (min-width: 769px) {
+            #a {
+                width: 100vw;
+                overflow: hidden;
+                height: calc(100vh - 50px);
+                }
+
+            #i {
+                top: -10%;
+                margin-right: 10%;
+                zoom: 0.8;
+                -moz-transform: scale(0.8);
+                -o-transform: scale(0.8);
+                -webkit-transform: scale(0.8);
+                text-align: center;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            iframe.lightwidget-widget1{
+                width: 60%;
+            }   
+            iframe.lightwidget-widget2{
+                width: 60%;
+            }
+        }
+        
+        /* 중간 */
+        @media (min-width: 486px) and (max-width: 768px){
+            #a {
+                width: 100vw;
+                overflow: hidden;
+                height: calc(100vh - 50px);
+            }
+            #i {
+                top: 0%;
+                margin-left: 10%;
+                zoom: 0.8;
+                -moz-transform: scale(0.8);
+                -moz-transform-origin: 0 0;
+                -o-transform: scale(0.8);
+                -o-transform-origin: 0 0;
+                -webkit-transform: scale(0.8);
+                -webkit-transform-origin: 0 0;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            iframe.lightwidget-widget1{
+                width: 100%;
+            }   
+            iframe.lightwidget-widget2{
+                width: 100%;
+            }
+        }
+        @media (max-width: 485px) {
+            /* 작을때 */
+            #a {
+                width: 100vw;
+                overflow: hidden;
+                height: calc(100vh - 50px);
+                
+            }
+            #i {
+                
+                margin-left: 10%;
+                zoom: 0.8;
+                -moz-transform: scale(0.8);
+                -moz-transform-origin: 0 0;
+                -o-transform: scale(0.8);
+                -o-transform-origin: 0 0;
+                -webkit-transform: scale(0.8);
+                -webkit-transform-origin: 0 0;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            iframe.lightwidget-widget1{
+                width: 100%;
+            }   
+            iframe.lightwidget-widget2{
+                width: 100%;
+            }   
+        }
+    </style>
 </head>
 
 <body>
-     <div class="menu">
-          <nav class="clearfix">
-               <ul class="clearfix">
-                    <li><a href="sheet.html">장부</a></li>
-                    <!--""<-여기 부분에 URL 작성하면 됨-->
-                    <li><a href="index.html">달력</a></li>
-                    <li><a href="photo.html">사진들</a></li>
-               </ul>
-               <a id="pull" href="#"></a>
-          </nav>
-     </div>
-     <h1 style="text-align: center;">사진들</h1>
+    
+    <div class="menu">
+        <nav class="clearfix">
+            <ul class="clearfix"></ul>
+                <li><a href="sheet.html">장부</a></li>
+                <li><a href="index.html">달력</a></li>
+                <li><a href="photo.html">사진들</a></li>
+            </ul>
+            <button id="button1" onclick="button1_click();" style="width: 50px;  float: right; margin-top: 15px; margin-right: 40px;" >list</button>    
+            <a id="pull" href="#"></a>
+        </nav>
+        
+       
+    </div>
+    
+    <div style="text-align: center">
+    <!-- LightWidget WIDGET -->
+    <iframe src="//lightwidget.com/widgets/6127baa6ed5d551595fe8ea677f14517.html" scrolling="no" allowtransparency="true" class="lightwidget-widget1" style="border:0;overflow:hidden; "></iframe>
+        
+    <!-- slide -->
+    <iframe src="//lightwidget.com/widgets/459f903cfd0a5198a96607ea0bf40fe6.html" scrolling="no" allowtransparency="true" class="lightwidget-widget2" style="border:0;overflow:hidden; display: none;"></iframe>
+    </div>
+
+    <script>
+        function button1_click(){
+            var insta = document.querySelector(".lightwidget-widget1");
+            var insta2 = document.querySelector(".lightwidget-widget2");
+            if( document.getElementById("button1").innerText == "list"){
+                document.getElementById("button1").innerText = "slide";
+                insta.style.display = "none";
+                insta2.style.display = "inline-block";
+            }
+            else{
+                document.getElementById("button1").innerText = "list";
+                insta.style.display = "inline-block";
+                insta2.style.display = "none";
+            }
+            
+            
+        }
+    </script>
 </body>
+
 
 </html>
