@@ -24,6 +24,13 @@ function init() {
         let column = heading.label;
         colz.push(column);
         const th = document.createElement("th");
+
+        if (column === null || column === undefined || column === "") {
+          column = "100000000";
+          th.style.backgroundColor = "#40d0f0";
+          th.style.color = "#40d0f0";
+        }
+
         th.innerText = column;
         tr.appendChild(th);
       });
@@ -44,6 +51,8 @@ function init() {
       });
       processRows(data);
     });
+
+  // document.querySelector("th").innerText = 100000000;
 }
 
 function processRows(json) {

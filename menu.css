@@ -71,4 +71,5 @@ li a:hover {
   color: white;
   position: relative;
   z-index: 1;
+  flex: 1;
 }

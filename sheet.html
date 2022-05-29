@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="menu.css" />
     <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="sheet.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link
@@ -53,6 +54,7 @@
 
       table td,
       table th {
+        overflow: hidden;
         border: 1px solid #ddd;
         padding: 8px;
       }
@@ -92,10 +94,10 @@
         <button class="btn-open-popup">연락처</button>
       </nav>
     </div>
-    <h3 id="h" style="text-align: center">카카오뱅크 3333-22-0492563</h3>
+    <h5 id="h" style="text-align: center">카카오뱅크 3333-22-0492563</h5>
     <h1 id="j" style="text-align: center">카카오뱅크 3333-22-0492563</h1>
 
-    <div class="container" style="text-align: left">
+    <div class="container" style="text-align: left; overflow: auto">
       <table class="output"></table>
       <script src="sheet.js"></script>
     </div>
