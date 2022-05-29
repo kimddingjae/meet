@@ -5,3 +5,13 @@
 .item {
   border: 1px;
 }
+
+@media (max-width: 485px) {
+  /* 작을때 */
+  .container {
+    zoom: 0.9;
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+  }
+}
