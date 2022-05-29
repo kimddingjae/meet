@@ -79,3 +79,11 @@ table th {
   margin-right: 40px;
   margin-top: 10px;
 }
+@media (max-width: 485px) {
+  /* 작을때 */
+  .btn-open-popup {
+    height: 45px;
+    width: 45px;
+    font-size: 5px;
+  }
+}
