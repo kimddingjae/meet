@@ -1,0 +1,7 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr 1fr 1fr);
+}
+.item {
+  border: 1px;
+}
