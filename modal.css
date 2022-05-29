@@ -82,8 +82,8 @@ table th {
 @media (max-width: 485px) {
   /* 작을때 */
   .btn-open-popup {
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
     font-size: 5px;
   }
 }
