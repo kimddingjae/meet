@@ -91,14 +91,22 @@
           <li><a href="index.html">달력</a></li>
           <li><a href="photo.html">사진들</a></li>
         </ul>
+
         <button class="btn-open-popup">연락처</button>
       </nav>
     </div>
+
     <h5 id="h" style="text-align: center">카카오뱅크 3333-22-0492563</h5>
     <h1 id="j" style="text-align: center">카카오뱅크 3333-22-0492563</h1>
-
-    <div class="container" style="text-align: left; overflow: auto">
-      <table class="output"></table>
+    <div class="container">
+      <select id="combo" onchange="comboChange()"></select>
+    </div>
+    <div
+      id="container"
+      class="container"
+      style="text-align: left; overflow: auto"
+    >
+      <!-- <table class="output"></table> -->
       <script src="sheet.js"></script>
     </div>
 

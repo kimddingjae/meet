@@ -1,15 +1,31 @@
 const sheetId = "1C_tPlxxIRJc1Mx2W0vgTLPm4f9Rvtx4QIThsoGZoJBs";
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 const date = new Date();
-const sheetName = `${date.getFullYear()}년`;
 const query = encodeURIComponent("Select *");
-const url = `${base}&sheet=${sheetName}&tq=${query}`;
-const data = [];
+const combo = document.querySelector("#combo");
+const container = document.querySelector("#container");
+//let output = document.querySelector(".output");
+
+for (i = 2022; i <= date.getFullYear(); i++) {
+  var newOption = document.createElement("option");
+  newOption.text = i + "년";
+  newOption.value = i + "년";
+  combo.appendChild(newOption);
+}
+
+const sheetName = `${date.getFullYear()}년`;
+combo.value = `${date.getFullYear()}년`;
+
 document.addEventListener("DOMContentLoaded", init);
 
-const output = document.querySelector(".output");
-
 function init() {
+  let url = `${base}&sheet=${combo.value}&tq=${query}`;
+  console.log(url);
+  const outputChild = document.createElement("table");
+  outputChild.className = "output";
+  container.prepend(outputChild);
+  const output = document.querySelector(".output");
+
   fetch(url)
     .then((res) => res.text())
     .then((rep) => {
@@ -17,6 +33,7 @@ function init() {
       const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
 
       const colz = [];
+      const data = [];
       const tr = document.createElement("tr");
       //Extract column labels
 
@@ -49,6 +66,7 @@ function init() {
         });
         data.push(row);
       });
+
       processRows(data);
     });
 
@@ -56,6 +74,7 @@ function init() {
 }
 
 function processRows(json) {
+  let output = document.querySelector(".output");
   json.forEach((row) => {
     const tr = document.createElement("tr");
 
@@ -69,4 +88,10 @@ function processRows(json) {
     });
     output.appendChild(tr);
   });
+}
+
+function comboChange() {
+  const output = document.querySelector(".output");
+  output.remove();
+  init();
 }
