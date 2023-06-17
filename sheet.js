@@ -34,6 +34,7 @@ function init() {
 
       const colz = [];
       const data = [];
+
       const tr = document.createElement("tr");
       //Extract column labels
 
@@ -90,7 +91,7 @@ function processRows(json) {
   });
 }
 
-function comboChange() {
+function yearChange() {
   const output = document.querySelector(".output");
   output.remove();
   init();
