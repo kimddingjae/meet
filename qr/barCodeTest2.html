@@ -21,6 +21,8 @@
   
 //});
 
+var canvasElement = document.getElementById("canvas");
+var canvas = canvasElement.getContext("2d");
 let constrains = { video: { facingMode: "environment" } };
 	  
 navigator.mediaDevices.getUserMedia(constrains).then((stream) => {
@@ -30,9 +32,9 @@ let capturer = new ImageCapture(stream.getVideoTracks()[0]);
 
 function step(capturer) {
     capturer.grabFrame().then((bitmap) => {
-      let canvas = document.getElementById("canvas");
-      let ctx = canvas.getContext("2d");
-      ctx.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvas.width, canvas.height);
+      //let canvas = document.getElementById("canvas");
+      //let ctx = canvas.getContext("2d");
+      canvas.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvas.width, canvas.height);
       var barcodeDetector = new BarcodeDetector();
       barcodeDetector.detect(bitmap)
         .then(barcodes => {
