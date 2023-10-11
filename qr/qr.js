@@ -1,3 +1,6 @@
+window.onload = function (){
+cameraOn();
+}
 var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
 
@@ -15,13 +18,14 @@ var canvasElement = document.getElementById("canvas");
     }
 
     // Use facingMode: environment to attemt to get the front camera on phones
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-      video.srcObject = stream;
-      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-      video.play();
-      requestAnimationFrame(tick);
-    });
-
+    function cameraOn(){
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+          video.srcObject = stream;
+          video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+          video.play();
+          requestAnimationFrame(tick);
+        });
+    }
     function tick() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         canvasElement.hidden = false;
@@ -40,7 +44,10 @@ var canvasElement = document.getElementById("canvas");
           drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           outputData.innerText = code.data;
-        } 
+          canvasElement.hidden = true;
+        } else{
+          requestAnimationFrame(tick);
+        }
       }
-      requestAnimationFrame(tick);
+      
     }
