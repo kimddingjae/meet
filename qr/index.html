@@ -3,7 +3,7 @@
   <meta charset="EUC-KR">
   <title>jsQR Demo</title>
   
-  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+  //<link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
   <style>
     body {
       font-family: 'Ropa Sans', sans-serif;
@@ -17,26 +17,11 @@
       width: 100%;
     }
 
-    #output {
-      margin-top: 20px;
-      background: #eee;
-      padding: 10px;
-      padding-bottom: 0;
-    }
-
-    #output div {
-      padding-bottom: 10px;
-      word-wrap: break-word;
-    }
-
   </style>
 </head>
 <body>
   
   <canvas id="canvas" hidden></canvas>
-  <div id="output" hidden>
-    <div hidden><b>Data:</b> <span id="outputData"></span></div>
-  </div>
   <br>
   <br>
   <br>
@@ -46,59 +31,10 @@
       <label style="font-size:50px"><input type="radio" name="type" value="barcode"> Barcode</label>
       <label style="font-size:50px"><input type="radio" name="type" value="input"> 입력</label>
       <p><input type="submit" value="Submit">
+      <input type="text" value="" hidden>  
   </form>
   
   <a href="tel:01038859194"> <span> 전화 </span> </a>
-  <script>
-    
-    // var canvasElement = document.getElementById("canvas");
-    // var canvas = canvasElement.getContext("2d");
-
-    // var video = document.createElement("video");
-    // var outputContainer = document.getElementById("output");
-    // var outputData = document.getElementById("outputData");
-
-    // function drawLine(begin, end, color) {
-    //   canvas.beginPath();
-    //   canvas.moveTo(begin.x, begin.y);
-    //   canvas.lineTo(end.x, end.y);
-    //   canvas.lineWidth = 4;
-    //   canvas.strokeStyle = color;
-    //   canvas.stroke();
-    // }
-
-    // // Use facingMode: environment to attemt to get the front camera on phones
-    // navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-    //   video.srcObject = stream;
-    //   video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-    //   video.play();
-    //   requestAnimationFrame(tick);
-    // });
-
-    // function tick() {
-    //   if (video.readyState === video.HAVE_ENOUGH_DATA) {
-    //     canvasElement.hidden = false;
-    //     outputContainer.hidden = false;
-
-    //     canvasElement.height = video.videoHeight;
-    //     canvasElement.width = video.videoWidth;
-    //     canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-    //     var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-    //     var code = jsQR(imageData.data, imageData.width, imageData.height, {
-    //       inversionAttempts: "dontInvert",
-    //     });
-    //     if (code) {
-    //       drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
-    //       drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
-    //       drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
-    //       drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-    //       outputData.innerText = code.data;
-    //     } 
-    //   }
-    //   requestAnimationFrame(tick);
-    // }
-    
-  </script>
   <script src="./qr.js"></script>
   <script src="./jsQR.js"></script>
 </body>
