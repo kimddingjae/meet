@@ -39,7 +39,7 @@ function step(capturer) {
       barcodeDetector.detect(bitmap)
         .then(barcodes => {
           document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
-	  //canvas.hidden = true;
+	  canvas.hidden = true;
           step(capturer);
         })
         .catch((e) => {
