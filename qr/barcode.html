@@ -8,6 +8,9 @@
   
   
   <script>
+    window.onload = () => {
+    loadDevicesAndPlay();
+    };
     var barcodeDetector = new BarcodeDetector();
     var barcodeDetector = new BarcodeDetector({formats: ['code_39', 'codabar', 'ean_13']})
     
