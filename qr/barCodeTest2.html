@@ -39,12 +39,13 @@ function step(capturer) {
       barcodeDetector.detect(bitmap)
         .then(barcodes => {
           document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
-	  canvas.hidden = true;
-	  alert(document.getElementById("barcodes").innerHTML)
+	  
+	  
 	  if(document.getElementById("barcodes").innerHTML == "" || document.getElementById("barcodes").innerHTML == null){ 
-	    return;
+	    step(capturer);
 	  } else{
-            step(capturer);
+	    canvasElement.hidden = true;	  
+            return;
 	  }
         })
         .catch((e) => {
