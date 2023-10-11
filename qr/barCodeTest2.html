@@ -40,8 +40,12 @@ function step(capturer) {
         .then(barcodes => {
           document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
 	  canvas.hidden = true;
-	  return;
-          step(capturer);
+	  alert(document.getElementById("barcodes").innerHTML)
+	  if(document.getElementById("barcodes").innerHTML == "" || document.getElementById("barcodes").innerHTML == null){ 
+	    return;
+	  } else{
+            step(capturer);
+	  }
         })
         .catch((e) => {
           console.error(e);
