@@ -8,11 +8,16 @@
 
 <canvas id="canvas" height="240" width="320"></canvas>
 <div id="barcodes"></div>
-
+<br>
+<br>
+<br>
+<button onclick="cameraOn()">재촬영</button>
 
 
 <script>
-
+window.onload = function(){
+  cameraOn();
+}
   //navigator.mediaDevices.enumerateDevices().then((devices) => {
 	//console.log(JSON.stringify(devices));
 	//let id = devices.filter((device) => device.kind === "videoinput").slice(-1).pop().deviceId;
@@ -24,12 +29,13 @@
 var canvasElement = document.getElementById("canvas");
 var canvas = canvasElement.getContext("2d");
 let constrains = { video: { facingMode: "environment" } };
-	  
-navigator.mediaDevices.getUserMedia(constrains).then((stream) => {
-let capturer = new ImageCapture(stream.getVideoTracks()[0]);
+function cameraOn() {	  
+  navigator.mediaDevices.getUserMedia(constrains).then((stream) => {
+  let capturer = new ImageCapture(stream.getVideoTracks()[0]);
   step(capturer);
-});
-
+  });
+}
+	
 function step(capturer) {
     capturer.grabFrame().then((bitmap) => {
       //let canvas = document.getElementById("canvas");
