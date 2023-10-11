@@ -34,12 +34,6 @@
     #canvas {
       width: 100%;
     }
-    
-    #test1 {
-      width: 100%;
-      height: 50px;
-      padding: 10px;
-    }
 
     #output {
       margin-top: 20px;
@@ -49,8 +43,6 @@
     }
 
     #output div {
-      height: 200px;
-      font-size: 50px;
       padding-bottom: 10px;
       word-wrap: break-word;
     }
@@ -61,29 +53,21 @@
   </style>
 </head>
 <body>
-  <h1>QR Test</h1>
-  <div id="loadingMessage">?Υ Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <h1>jsQR Demo</h1>
+  <a id="githubLink" href="https://github.com/cozmo/jsQR">View documentation on Github</a>
+  <p>Pure JavaScript QR code decoding library.</p>
+  <div id="loadingMessage">?�� Unable to access video stream (please make sure you have a webcam enabled)</div>
   <canvas id="canvas" hidden></canvas>
-  <!-- 
-  <a id="githubLink" href="https://yportal.ync.ac.kr">페이지 전환 테스트 </a>
-  -->
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
-    <div hidden><b>Data:</b> <span id="outputData" style="width:100%;height:200px;fontSize:50px"></span></div>
+    <div hidden><b>Data:</b> <span id="outputData"></span></div>
   </div>
-
-  <button onClick="detect();">
-    버튼
-  </button>
+  <br>
+  <br>
+  <br>
   
-  <!--
-  <div id="test1">
-    <a id="test" href="">페이지 전환 테스트 </a>
-  </div>
-  -->
-  
+  <a href="tel:01038859194"> ��ȭ </a>
   <script>
-  
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
@@ -91,8 +75,7 @@
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
-    var test = document.getElementById("test");
-    
+
     function drawLine(begin, end, color) {
       canvas.beginPath();
       canvas.moveTo(begin.x, begin.y);
@@ -132,7 +115,6 @@
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
-          //test.href = code.data;
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
@@ -140,46 +122,6 @@
       }
       requestAnimationFrame(tick);
     }
- 
-  async function detect() {
-  const barcodeDetector = new BarcodeDetector();
-  const list = document.getElementById("barcode-list");
-  let itemsFound = [];
-  const mediaStream = await navigator.mediaDevices.getUserMedia({
-    video: { facingMode: "environment" }
-  });
- 
-  const video2 = document.createElement("video2");
-  video2.srcObject = mediaStream;
-  video2.autoplay = true;
- 
-  list.before(video2);
- 
-  function render() {
-    barcodeDetector
-    .detect(video2)
-    .then((barcodes) => {
-      barcodes.forEach((barcode) => {
-        if (!itemsFound.includes(barcode.rawValue)) {
-          itemsFound.push(barcode.rawValue);
-          const li = document.createElement("li");
-          li.innerHTML = barcode.rawValue;
-          list.appendChild(li);
-        }
-      });
-    })
-    .catch((err) => {
-      alert(err);
-    });
-  }
- 
-  (function renderLoop() {
-    requestAnimationFrame(renderLoop);
-    render();
-  })();
-}
-  
-    
   </script>
 </body>
 </html>
