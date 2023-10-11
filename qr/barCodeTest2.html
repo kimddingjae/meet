@@ -47,6 +47,8 @@ function cameraOn() {
 camera.onclick = function(){cameraOn()};
 	
 function step(capturer) {
+    if(canvasElement.hidden) return;
+    
     capturer.grabFrame().then((bitmap) => {
       //let canvas = document.getElementById("canvas");
       //let ctx = canvas.getContext("2d");
@@ -61,7 +63,6 @@ function step(capturer) {
 	    step(capturer);
 	  } else{
 	    canvasElement.hidden = true;	  
-            return;
 	  }
         })
         .catch((e) => {
