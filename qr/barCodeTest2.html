@@ -51,10 +51,8 @@ function step(capturer) {
 	  
 	  
 	  if(document.getElementById("barcodes").innerHTML == "" || document.getElementById("barcodes").innerHTML == null){ 
-	    alert(document.getElementById("barcodes").innerHTML + ":::::::" + canvasElement.hidden)
 	    step(capturer);
 	  } else{
-            alert(document.getElementById("barcodes").innerHTML + ":::::::" + canvasElement.hidden)
 	    canvasElement.hidden = true;	  
             return;
 	  }
