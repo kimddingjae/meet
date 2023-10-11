@@ -40,6 +40,7 @@ function step(capturer) {
         .then(barcodes => {
           document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
 	  canvas.hidden = true;
+	  return;
           step(capturer);
         })
         .catch((e) => {
