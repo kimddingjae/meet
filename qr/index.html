@@ -71,6 +71,10 @@
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData" style="width:100%;height:200px;fontSize:50px"></span></div>
   </div>
+
+  <button onClick="detect();">
+    버튼
+  </button>
   
   <!--
   <div id="test1">
@@ -135,6 +139,44 @@
       }
       requestAnimationFrame(tick);
     }
+ 
+  async function detect() {
+  const barcodeDetector = new BarcodeDetector();
+  const list = document.getElementById("barcode-list");
+  let itemsFound = [];
+  const mediaStream = await navigator.mediaDevices.getUserMedia({
+    video: { facingMode: "environment" }
+  });
+ 
+  const video2 = document.createElement("video2");
+  video2.srcObject = mediaStream;
+  video2.autoplay = true;
+ 
+  list.before(video2);
+ 
+  function render() {
+    barcodeDetector
+    .detect(video2)
+    .then((barcodes) => {
+      barcodes.forEach((barcode) => {
+        if (!itemsFound.includes(barcode.rawValue)) {
+          itemsFound.push(barcode.rawValue);
+          const li = document.createElement("li");
+          li.innerHTML = barcode.rawValue;
+          list.appendChild(li);
+        }
+      });
+    })
+    .catch(console.error);
+  }
+ 
+  (function renderLoop() {
+    requestAnimationFrame(renderLoop);
+    render();
+  })();
+}
+  
+    
   </script>
 </body>
 </html>
