@@ -11,7 +11,7 @@
 <br>
 <br>
 <br>
-<button onclick="cameraOn()">재촬영</button>
+<button id="cameraOn" onclick="cameraOn()">재촬영</button>
 
 
 <script>
@@ -29,7 +29,11 @@ window.onload = function(){
 
 var canvasElement = document.getElementById("canvas");
 var canvas = canvasElement.getContext("2d");
+var cameraOn = document.getElementById("cameraOn");
 let constrains = { video: { facingMode: "environment" } };
+
+cameraOn.onclick = function(){cameraOn()};
+	
 function cameraOn() {	
   canvasElement.hidden = false;
   document.getElementById("barcodes").innerHTML = "";
