@@ -11,7 +11,7 @@
 <br>
 <br>
 <br>
-<button id="cameraOn">재촬영</button>
+<button id="camera">재촬영</button>
 
 
 <script>
@@ -29,10 +29,10 @@ window.onload = function(){
 
 var canvasElement = document.getElementById("canvas");
 var canvas = canvasElement.getContext("2d");
-var cameraOn = document.getElementById("cameraOn");
+var camera = document.getElementById("camera");
 let constrains = { video: { facingMode: "environment" } };
 
-cameraOn.onclick = function(){cameraOn()};
+
 	
 function cameraOn() {	
   canvasElement.hidden = false;
@@ -42,6 +42,8 @@ function cameraOn() {
   step(capturer);
   });
 }
+
+camera.onclick = function(){cameraOn()};
 	
 function step(capturer) {
     capturer.grabFrame().then((bitmap) => {
