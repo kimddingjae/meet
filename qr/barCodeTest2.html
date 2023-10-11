@@ -34,12 +34,12 @@ function step(capturer) {
     capturer.grabFrame().then((bitmap) => {
       //let canvas = document.getElementById("canvas");
       //let ctx = canvas.getContext("2d");
-      canvas.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvas.width, canvas.height);
+      canvas.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasElement .width, canvasElement .height);
       var barcodeDetector = new BarcodeDetector();
       barcodeDetector.detect(bitmap)
         .then(barcodes => {
           document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
-	  canvas.hidden = true;
+	  //canvas.hidden = true;
           step(capturer);
         })
         .catch((e) => {
