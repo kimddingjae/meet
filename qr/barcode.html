@@ -1,0 +1,89 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jsQR Demo</title>  
+</head>
+<body>
+  <h1>jsQR Demo</h1>
+  
+  
+  <script>
+    var barcodeDetector = new BarcodeDetector();
+    var barcodeDetector = new BarcodeDetector({formats: ['code_39', 'codabar', 'ean_13']})
+    
+    await BarcodeDetector.getSupportedFormats();
+    
+    var localStream;
+function loadDevicesAndPlay(){
+  var constraints = {video: true, audio: false};
+  navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+      localStream = stream;
+      var cameraselect = document.getElementById("cameraSelect");
+      cameraselect.innerHTML="";
+      navigator.mediaDevices.enumerateDevices().then(function(devices) {
+          var count = 0;
+          var cameraDevices = [];
+          var defaultIndex = 0;
+          for (var i=0;i<devices.length;i++){
+              var device = devices[i];
+              if (device.kind == 'videoinput'){
+                  cameraDevices.push(device);
+                  var label = device.label || `Camera ${count++}`;
+                  cameraselect.add(new Option(label,device.deviceId));
+                  if (label.toLowerCase().indexOf("back") != -1) { //select the back camera as the default
+                    defaultIndex = cameraDevices.length - 1;
+                  }
+              }
+          }
+
+          if (cameraDevices.length>0) {
+            cameraselect.selectedIndex = defaultIndex;
+            play(cameraDevices[defaultIndex].deviceId);
+          }else{
+            alert("No camera detected.");
+          }
+      });
+
+  });
+}
+
+function play(deviceId) {
+  stop(); // close before play
+  var constraints = {};
+
+  if (!!deviceId){
+      constraints = {
+          video: {deviceId: deviceId},
+          audio: false
+      }
+  }else{
+      constraints = {
+          video: true,
+          audio: false
+      }
+  }
+
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+      localStream = stream;
+      var cameraVideo = document.getElementsByClassName("camera")[0];
+      // Attach local stream to video element
+      cameraVideo.srcObject = stream;
+
+  }).catch(function(err) {
+      console.error('getUserMediaError', err, err.stack);
+      alert(err.message);
+  });
+}
+
+function stop(){
+  try{
+      if (localStream){
+          localStream.getTracks().forEach(track => track.stop());
+      }
+  } catch (e){
+      alert(e.message);
+  }
+}
+  </script>
+</body>
+</html>
