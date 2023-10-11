@@ -13,11 +13,13 @@
 
 <script>
 
-  navigator.mediaDevices.enumerateDevices().then((devices) => {
-	console.log(JSON.stringify(devices));
-	let id = devices.filter((device) => device.kind === "videoinput").slice(-1).pop().deviceId;
-  let constrains = {video: {optional: [{sourceId: id }]}};
+  //navigator.mediaDevices.enumerateDevices().then((devices) => {
+	//console.log(JSON.stringify(devices));
+	//let id = devices.filter((device) => device.kind === "videoinput").slice(-1).pop().deviceId;
+  //let constrains = {video: {optional: [{sourceId: id }]}};
 
+  let constrains = { video: { facingMode: "environment" } };
+	  
   navigator.mediaDevices.getUserMedia(constrains).then((stream) => {
     let capturer = new ImageCapture(stream.getVideoTracks()[0]);
   	step(capturer);
