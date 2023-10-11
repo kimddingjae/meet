@@ -3,10 +3,8 @@ cameraOn();
 }
 var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
-
+    var data = document.getElementById("data");
     var video = document.createElement("video");
-    var outputContainer = document.getElementById("output");
-    var outputData = document.getElementById("outputData");
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -29,8 +27,6 @@ var canvasElement = document.getElementById("canvas");
     function tick() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         canvasElement.hidden = false;
-        outputContainer.hidden = false;
-
         canvasElement.height = video.videoHeight;
         canvasElement.width = video.videoWidth;
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
@@ -43,7 +39,7 @@ var canvasElement = document.getElementById("canvas");
           drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
           drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-          outputData.innerText = code.data;
+          data.innerText = code.data;
           canvasElement.hidden = true;
         } else{
           requestAnimationFrame(tick);
