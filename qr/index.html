@@ -41,12 +41,13 @@
 
   <script src="./jsQR.js"></script>
   <script>
+
+    var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
-    var video = document.createElement("video");
-    var dataElement = document.getElementById("data");    
     var data = dataElement.value;
-    cameraOn();
+
+    //cameraOn();
     function submit(){
       if(data == "" || data == null){
         alert("No Data");
@@ -54,8 +55,8 @@
         alert(data);
       }
     }
-     function drawLine(begin, end, color) {
-      
+    
+    function drawLine(begin, end, color) {
       canvas.beginPath();
       canvas.moveTo(begin.x, begin.y);
       canvas.lineTo(end.x, end.y);
@@ -65,23 +66,22 @@
     }
 
     // Use facingMode: environment to attemt to get the front camera on phones
-    function cameraOn(){
-    var video = document.createElement("video");
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-          video.srcObject = stream;
-          video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-          video.play();
-          requestAnimationFrame(tick);
-        });
-    }
-    function tick() {    
-      //if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        if (true) {
-          alert(3333333);  
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
+    });
+
+    function tick() {
+      loadingMessage.innerText = "??Loading video..."
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        loadingMessage.hidden = true;
         canvasElement.hidden = false;
+        outputContainer.hidden = false;
+
         canvasElement.height = video.videoHeight;
         canvasElement.width = video.videoWidth;
-          alert("height :::: " + canvasElement.height);
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
@@ -92,14 +92,15 @@
           drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
           drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-          alert(123)
-          data.value = code.data;
-          canvasElement.hidden = true;
-        } else{
-          requestAnimationFrame(tick);
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          outputData.innerText = code.data;
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
         }
       }
-      
+      requestAnimationFrame(tick);
     }
     
     
