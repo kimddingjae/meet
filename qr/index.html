@@ -29,7 +29,11 @@
 </head>
 <body>
   <div id="container">
-    <canvas id="canvas" style="display:block" ></canvas>
+    <div id="canvasContainer" style="display:block">
+      <canvas id="canvas" style="display:block" ></canvas>
+      <input id="qrText" type="text" value="" style="display:none">
+      <button onclick="cameraOn()">재촬영</button>
+    </div>
     <div id="inputContainer" style="display:none">
       <label id="inputTextLabel" for="inputText" >입력 : </label>  
       <input id="inputText" type="text" value="" >
@@ -54,26 +58,27 @@
   <script>
 
     var video = document.createElement("video");
+    var canvasContainerElement = document.getElementById("canvasContainer");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
     var dataElement = document.getElementById("data");
     var data = dataElement.value;
     var inputContainerElement = document.getElementById("inputContainer");
+    var qrTextElement = document.getElementById("qrText");
+    var radio = "";
     
-    
-
     $("input[name='type']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
-        var radio = this.value;
+        radio = this.value;
         if(radio == "qr"){
-          canvasElement.style.display = "block";
+          canvasContainerElement.style.display = "block";
           inputContainerElement.style.display = "none";
           cameraOn();
         } else if(radio == "barcode"){
-          canvasElement.style.display = "none";
+          canvasContainerElement.style.display = "none";
           inputContainerElement.style.display = "none";
         } else if(radio == "input"){
-          canvasElement.style.display = "none";
+          canvasContainerElement.style.display = "none";
           inputContainerElement.style.display = "block";
         }
         
@@ -97,13 +102,19 @@
       canvas.stroke();
     }
     function cameraOn() {
-      // Use facingMode: environment to attemt to get the front camera on phones
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-        video.srcObject = stream;
-        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-        video.play();
-        requestAnimationFrame(tick);
-      });
+      if(radio == "qr"){
+        // Use facingMode: environment to attemt to get the front camera on phones
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+          video.srcObject = stream;
+          video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+          video.play();
+          requestAnimationFrame(tick);
+        });
+  
+        qrTextElement.style.display = "none";
+        canvasElement.style.display = "block";
+      }
+      
     }
 
     function tick() {
@@ -123,6 +134,9 @@
           drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           dataElement.value = code.data;
+          qrTextElement.value = code.data;
+          canvasElement.style.display = "none";
+          qrTextElement.style.display = "block";
         } 
       }
       requestAnimationFrame(tick);
