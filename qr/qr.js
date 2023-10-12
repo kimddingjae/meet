@@ -1,13 +1,16 @@
 
-var canvasElement = document.getElementById("canvas");
-    var canvas = canvasElement.getContext("2d");
-    var data = document.getElementById("data");
-    var video = document.createElement("video");
+
 
 
     window.onload = function (){
     cameraOn();
     }
+
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var data = document.getElementById("data");
+    var video = document.createElement("video");
+
     function drawLine(begin, end, color) {
       canvas.beginPath();
       canvas.moveTo(begin.x, begin.y);
