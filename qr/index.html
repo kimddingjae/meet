@@ -43,6 +43,9 @@
   <script src="./jsQR.js"></script>
   <script>
     var data = document.getElementById("data");
+    var submit = document.getElementById("submit");
+
+    submit.addEventListener('click', submit())
 
     function submit(){
       if(data == "" || data == null){
