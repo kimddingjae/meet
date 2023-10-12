@@ -21,17 +21,23 @@
       width:640px;
       height:480px;
     }
-
+    #inputContainer {
+      width:100%;
+      height:100%;
+      margin-top:100px;
+    }
   </style>
   
  
 </head>
-<body >
+<body>
   <div id="container">
-  <canvas id="canvas" style="display:block" ></canvas>
-  <label for="inputText" style="display:none">입력 : </label>  
-  <input id="inputText" type="text" value="" style="display:none">
-  </div>
+    <canvas id="canvas" style="display:block" ></canvas>
+    <div id="inputContainer">
+      <label id="inputTextLabel" for="inputText" style="display:none">입력 : </label>  
+      <input id="inputText" type="text" value="" style="display:none">
+    </div>
+  </div>  
   <br>
   <br>
   <br>
@@ -56,6 +62,7 @@
     var dataElement = document.getElementById("data");
     var data = dataElement.value;
     var inputTextElement = document.getElementById("inputText");
+    var inputTextLabelElement = document.getElementById("inputTextLabel");
     
 
     $("input[name='type']:radio").change(function () {
@@ -63,13 +70,16 @@
         var radio = this.value;
         if(radio == "qr"){
           canvasElement.style.display = "block";
+          inputTextLabelElement.style.display = "none";
           inputTextElement.style.display = "none";
           cameraOn();
         } else if(radio == "barcode"){
           canvasElement.style.display = "none";
+          inputTextLabelElement.style.display = "none";
           inputTextElement.style.display = "none";
         } else if(radio == "input"){
           canvasElement.style.display = "none";
+          inputTextLabelElement.style.display = "block";
           inputTextElement.style.display = "block";
         }
         
