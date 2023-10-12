@@ -98,10 +98,11 @@
     
     cameraOn();
     function submit(){
-      if(data == "" || data == null){
+      var submitData = dataElement = document.getElementById("data").value;
+      if(submitData == "" || submitData == null){
         alert("No Data");
       } else{
-        alert(data);
+        alert(submitData);
       }
     }
     
