@@ -19,6 +19,7 @@
 
   </style>
   <script src="./qr.js"></script>
+ 
 </head>
 <body>
   
@@ -38,5 +39,16 @@
   <a href="tel:01038859194"> <span> 전화 </span> </a>
   
   <script src="./jsQR.js"></script>
+  <script>
+    var data = document.getElementById("data");
+
+    function submit(){
+      if(data == "" || data == null){
+        alert("No Data");
+      } else{
+        alert(data);
+      }
+    }
+  </script>
 </body>
 </html>
