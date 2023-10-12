@@ -1,9 +1,5 @@
-    var canvasElement = document.getElementById("canvas");
-    var canvas = canvasElement.getContext("2d");
-    var data = document.getElementById("data");
-    var video = document.createElement("video");
-
     function drawLine(begin, end, color) {
+      var canvas = canvasElement.getContext("2d");
       canvas.beginPath();
       canvas.moveTo(begin.x, begin.y);
       canvas.lineTo(end.x, end.y);
@@ -27,6 +23,10 @@
         });
     }
     function tick() {
+      var canvasElement = document.getElementById("canvas");
+      var canvas = canvasElement.getContext("2d");
+      var data = document.getElementById("data");
+      var video = document.createElement("video");
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         canvasElement.hidden = false;
         canvasElement.height = video.videoHeight;
