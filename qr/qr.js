@@ -28,7 +28,7 @@
       var canvas = canvasElement.getContext("2d");
       var data = document.getElementById("data");
       var video = document.createElement("video");
-      alert(2222222);  
+      alert(video.readyState + ":::::::" + video.HAVE_ENOUGH_DATA);  
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
           alert(3333333);  
         canvasElement.hidden = false;
