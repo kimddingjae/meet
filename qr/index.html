@@ -29,7 +29,7 @@
   <br>
 
   <form method="get" action="submit()">
-      <label style="font-size:50px"><input type="radio" name="type" value="qr"> QR</label>
+      <label style="font-size:50px"><input type="radio" name="type" value="qr" checked> QR</label>
       <label style="font-size:50px"><input type="radio" name="type" value="barcode"> Barcode</label>
       <label style="font-size:50px"><input type="radio" name="type" value="input"> 입력</label>
       <input id="data" type="text" value="" hidden>  
@@ -48,7 +48,14 @@
     var dataElement = document.getElementById("data");
     var data = dataElement.value;
 
-    //cameraOn();
+    $("input[name='type']:radio").change(function () {
+        //라디오 버튼 값을 가져온다.
+        var radio = this.value;
+                        
+        alert(radio);            
+    });
+    
+    cameraOn();
     function submit(){
       if(data == "" || data == null){
         alert("No Data");
@@ -65,14 +72,15 @@
       canvas.strokeStyle = color;
       canvas.stroke();
     }
-
-    // Use facingMode: environment to attemt to get the front camera on phones
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-      video.srcObject = stream;
-      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-      video.play();
-      requestAnimationFrame(tick);
-    });
+    function cameraOn() {
+      // Use facingMode: environment to attemt to get the front camera on phones
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+        video.srcObject = stream;
+        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+        video.play();
+        requestAnimationFrame(tick);
+      });
+    }
 
     function tick() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
