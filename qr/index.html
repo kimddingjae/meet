@@ -42,8 +42,9 @@
   <script src="./qr.js"></script>
   <script src="./jsQR.js"></script>
   <script>
-    var data = document.getElementById("data");    
-
+    var dataElement = document.getElementById("data");    
+    var data = dataElement.value;
+    
     function submit(){
       if(data == "" || data == null){
         alert("No Data");
