@@ -1,3 +1,4 @@
+document.write('<script src="./jsQR.js"></script>');
     function drawLine(begin, end, color) {
       var canvasElement = document.getElementById("canvas");
       var canvas = canvasElement.getContext("2d");
