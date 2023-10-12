@@ -35,17 +35,14 @@
       <input id="data" type="text" value="" hidden>  
   </form>
 
-  <input id="submit" type="button" value="Submit" />
+  <button onclick="submit()">btn1</button>
   
   <a href="tel:01038859194"> <span> 전화 </span> </a>
 
   <script src="./qr.js"></script>
   <script src="./jsQR.js"></script>
   <script>
-    var data = document.getElementById("data");
-    var submit = document.getElementById("submit");
-
-    
+    var data = document.getElementById("data");    
 
     function submit(){
       if(data == "" || data == null){
@@ -54,7 +51,7 @@
         alert(data);
       }
     }
-    submit.addEventListener('click', submit())
+    
   </script>
 </body>
 </html>
