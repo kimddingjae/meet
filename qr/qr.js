@@ -29,7 +29,7 @@ document.write('<script src="./jsQR.js"></script>');
       var canvas = canvasElement.getContext("2d");
       var data = document.getElementById("data");
       var video = document.createElement("video");
-      alert(video.readyState + ":::::::" + video.HAVE_ENOUGH_DATA);  
+        
       //if (video.readyState === video.HAVE_ENOUGH_DATA) {
         if (true) {
           alert(3333333);  
