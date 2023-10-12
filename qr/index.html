@@ -23,6 +23,11 @@
       display: table-cell;
       vertical-align: middle;
     }
+
+    #qrText{
+      width:100%;
+      height:100px;
+    }
   </style>
   
  
@@ -31,7 +36,7 @@
   <div id="container">
     <div id="canvasContainer" style="display:block">
       <canvas id="canvas" style="display:block" ></canvas>
-      <input id="qrText" type="text" value="">
+      <span id="qrText"></span>
       <button id="reCamera" onclick="cameraOn()">재촬영</button>
     </div>
     <div id="inputContainer" style="display:none">
