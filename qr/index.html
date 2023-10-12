@@ -28,6 +28,13 @@
       width:100%;
       font-size:30px;
     }
+
+    #tel{
+      position:absolute;
+      bottom:10px;
+    }
+
+    
   </style>
   
  
@@ -55,9 +62,9 @@
       <input id="data" type="text" value="" hidden>  
   </form>
 
-  <button onclick="submit()">btn1</button>
+  <button onclick="submit()">확인</button>
   
-  <a href="tel:01038859194"> <span> 전화 </span> </a>
+  <a id="tel" href="tel:01038859194"> <span> 전화 </span> </a>
 
   <script src="./jsQR.js"></script>
   <script>
