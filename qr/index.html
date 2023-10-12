@@ -23,9 +23,9 @@
 </head>
 <body>
   <div>
-  <canvas id="canvas" ></canvas>
-  <label for="inputText">입력 : </label>  
-  <input id="inputText" type="text" value="" hidden>
+  <canvas id="canvas" style="display:block" ></canvas>
+  <label for="inputText" style="display:none">입력 : </label>  
+  <input id="inputText" type="text" value="" style="display:none">
   </div>
   <br>
   <br>
@@ -57,15 +57,15 @@
         //라디오 버튼 값을 가져온다.
         var radio = this.value;
         if(radio == "qr"){
-          canvasElement.hidden = false;
-          inputTextElement.hidden = true;
+          canvasElement.style.display = "block";
+          inputTextElement.style.display = "none";
           cameraOn();
         } else if(radio == "barcode"){
-          canvasElement.hidden = true;
-          inputTextElement.hidden = true;
+          canvasElement.style.display = "none";
+          inputTextElement.style.display = "none";
         } else if(radio == "input"){
-          canvasElement.hidden = true;
-          inputTextElement.hidden = false;
+          canvasElement.style.display = "none";
+          inputTextElement.style.display = "block";
         }
         
     });
