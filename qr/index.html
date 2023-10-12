@@ -98,9 +98,9 @@
     
     cameraOn();
     function submit(){
-      var submitData = dataElement = document.getElementById("data").value;
+      var submitData = document.getElementById("data").value;
       if("input" == document.querySelector('input[name="type"]:checked').value){
-        submitData = dataElement = document.getElementById("inputText").value;
+        submitData = document.getElementById("inputText").value;
       }
       if(submitData == "" || submitData == null){
         alert("No Data");
