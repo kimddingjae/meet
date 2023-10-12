@@ -137,7 +137,7 @@
           requestAnimationFrame(qr);
         });
   
-        qrTextElement.style.display = "none";
+        codeTextElement.style.display = "none";
         canvasElement.style.display = "block";
         reCameraElement.style.display = "none";
       } else if("barcode" == document.querySelector('input[name="type"]:checked').value){
@@ -172,7 +172,7 @@
           reCameraElement.style.display = "block";
         } 
       }
-      requestAnimationFrame(tick);
+      requestAnimationFrame(qr);
     }
 
     function barcode(capturer){
