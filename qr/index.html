@@ -65,11 +65,10 @@
     var data = dataElement.value;
     var inputContainerElement = document.getElementById("inputContainer");
     var qrTextElement = document.getElementById("qrText");
-    var radio = "";
     
     $("input[name='type']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
-        radio = this.value;
+        var radio = this.value;
         if(radio == "qr"){
           canvasContainerElement.style.display = "block";
           inputContainerElement.style.display = "none";
@@ -102,7 +101,7 @@
       canvas.stroke();
     }
     function cameraOn() {
-      if(radio == "qr"){
+      if("qr" == document.querySelector('input[name="pnt"]:checked').value;){
         // Use facingMode: environment to attemt to get the front camera on phones
         navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
           video.srcObject = stream;
