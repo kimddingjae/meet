@@ -29,7 +29,8 @@
       var data = document.getElementById("data");
       var video = document.createElement("video");
       alert(video.readyState + ":::::::" + video.HAVE_ENOUGH_DATA);  
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      //if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        if (true) {
           alert(3333333);  
         canvasElement.hidden = false;
         canvasElement.height = video.videoHeight;
