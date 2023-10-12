@@ -99,6 +99,9 @@
     cameraOn();
     function submit(){
       var submitData = dataElement = document.getElementById("data").value;
+      if("input" == document.querySelector('input[name="type"]:checked').value){
+        submitData = dataElement = document.getElementById("inputText").value;
+      }
       if(submitData == "" || submitData == null){
         alert("No Data");
       } else{
@@ -142,7 +145,7 @@
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
           inversionAttempts: "dontInvert",
         });
-        if (code && code != "" && code != null) {
+        if (code && code.trim != "" && code != null) {
           drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
           drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
           drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
