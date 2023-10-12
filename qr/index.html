@@ -22,8 +22,10 @@
  
 </head>
 <body>
-  
+  <div>
   <canvas id="canvas" ></canvas>
+    입력 : <input id="inputText" type="text" value="" hidden>
+  </div>
   <br>
   <br>
   <br>
@@ -47,12 +49,24 @@
     var canvas = canvasElement.getContext("2d");
     var dataElement = document.getElementById("data");
     var data = dataElement.value;
+    var inputTextElement = document.getElementById("inputText");
+    
 
     $("input[name='type']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
         var radio = this.value;
-                        
-        alert(radio);            
+        if(radio == "qr"){
+          canvas.hidden = false;
+          inputTextElement.hidden = true;
+          cameraOn();
+        } else if(radio == "barcode"){
+          canvas.hidden = true;
+          inputTextElement.hidden = true;
+        } else if(radio == "input"){
+          canvas.hidden = true;
+          inputTextElement.hidden = false;
+        }
+        
     });
     
     cameraOn();
