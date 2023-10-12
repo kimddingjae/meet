@@ -1,11 +1,3 @@
-
-
-
-
-    window.onload = function (){
-    cameraOn();
-    }
-
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
     var data = document.getElementById("data");
