@@ -30,7 +30,7 @@
       align-items: center;
     }
 
-    #qrText{
+    #codeText{
       width:100%;
       font-size:30px;
     }
@@ -52,7 +52,7 @@
   <div id="container">
     <div id="canvasContainer" style="display:block">
       <canvas id="canvas" style="display:block" ></canvas>
-      <span id="qrText"></span>
+      <span id="codeText"></span>
       <button id="reCamera" onclick="cameraOn()">재촬영</button>
     </div>
     <div id="inputContainer" style="display:none">
@@ -85,7 +85,7 @@
     var dataElement = document.getElementById("data");
     var data = dataElement.value;
     var inputContainerElement = document.getElementById("inputContainer");
-    var qrTextElement = document.getElementById("qrText");
+    var codeTextElement = document.getElementById("codeText");
     var reCameraElement = document.getElementById("reCamera");
     
     $("input[name='type']:radio").change(function () {
@@ -134,17 +134,22 @@
           video.srcObject = stream;
           video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
           video.play();
-          requestAnimationFrame(tick);
+          requestAnimationFrame(qr);
         });
   
         qrTextElement.style.display = "none";
         canvasElement.style.display = "block";
         reCameraElement.style.display = "none";
+      } else if("barcode" == document.querySelector('input[name="type"]:checked').value){
+         navigator.mediaDevices.getUserMedia(constrains).then((stream) => {
+           let capturer = new ImageCapture(stream.getVideoTracks()[0]);
+           barcode(capturer);
+         });
       }
       
     }
 
-    function tick() {
+    function qr() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         
         canvasElement.hidden = false;
@@ -161,13 +166,42 @@
           drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           dataElement.value = code.data;
-          qrTextElement.innerText = code.data;
+          codeTextElement.innerText = code.data;
           canvasElement.style.display = "none";
-          qrTextElement.style.display = "block";
+          codeTextElement.style.display = "block";
           reCameraElement.style.display = "block";
         } 
       }
       requestAnimationFrame(tick);
+    }
+
+    function barcode(capturer){
+      if(canvasElement.style.display == "none") return;
+    
+      capturer.grabFrame().then((bitmap) => {
+        canvas.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasElement .width, canvasElement .height);
+        var barcodeDetector = new BarcodeDetector();
+        barcodeDetector.detect(bitmap)
+          .then(barcodes => {
+            //document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
+  	  
+  	  
+  	  if(document.getElementById("barcodes").innerHTML.trim() == "" || document.getElementById("barcodes").innerHTML == null){ 
+  	    barcode(capturer);
+  	  } else{
+        dataElement.value = barcodes.map(barcode => barcode.rawValue).join(', ');
+        codeTextElement.innerText = barcodes.map(barcode => barcode.rawValue).join(', ');
+        canvasElement.style.display = "none";
+        codeTextElement.style.display = "block";
+        reCameraElement.style.display = "block";
+  	    //canvasElement.hidden = true;	  
+  	  }
+          })
+          .catch((e) => {
+            console.error(e);
+            //document.getElementById("barcodes").innerHTML = 'None';
+          });
+      });
     }
     
     
