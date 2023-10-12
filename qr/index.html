@@ -62,7 +62,7 @@
       <input id="data" type="text" value="" hidden>  
   </form>
 
-  <button onclick="submit()">확인</button>
+  <button onclick="submit()" style="width:100px;height:100px">확인</button>
   
   <a id="tel" href="tel:01038859194"> <span> 전화 </span> </a>
 
@@ -134,8 +134,8 @@
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         
         canvasElement.hidden = false;
-        canvasElement.height = video.videoHeight;
-        canvasElement.width = video.videoWidth;
+        canvasElement.height = 640;
+        canvasElement.width = 480;
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
