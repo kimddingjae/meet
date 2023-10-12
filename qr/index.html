@@ -128,6 +128,7 @@
     }
     function cameraOn() {
       if("qr" == document.querySelector('input[name="type"]:checked').value){
+        dataElement.value = "";
         // Use facingMode: environment to attemt to get the front camera on phones
         navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
           video.srcObject = stream;
