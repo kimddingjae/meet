@@ -1,4 +1,5 @@
     function drawLine(begin, end, color) {
+      var canvasElement = document.getElementById("canvas");
       var canvas = canvasElement.getContext("2d");
       canvas.beginPath();
       canvas.moveTo(begin.x, begin.y);
@@ -10,8 +11,8 @@
 
     // Use facingMode: environment to attemt to get the front camera on phones
     function cameraOn(){
-        alert(111);
-        var canvasElement = document.getElementById("canvas");
+        
+    var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
     var data = document.getElementById("data");
     var video = document.createElement("video");
@@ -31,6 +32,7 @@
         canvasElement.hidden = false;
         canvasElement.height = video.videoHeight;
         canvasElement.width = video.videoWidth;
+          alert("height :::: " + canvasElement.height);
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
