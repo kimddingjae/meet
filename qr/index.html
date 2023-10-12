@@ -62,8 +62,8 @@
     var canvas = canvasElement.getContext("2d");
     var dataElement = document.getElementById("data");
     var data = dataElement.value;
-    var inputTextElement = document.getElementById("inputText");
-    var inputTextLabelElement = document.getElementById("inputTextLabel");
+    var inputContainerElement = document.getElementById("inputContainer");
+    
     
 
     $("input[name='type']:radio").change(function () {
@@ -71,17 +71,14 @@
         var radio = this.value;
         if(radio == "qr"){
           canvasElement.style.display = "block";
-          inputTextLabelElement.style.display = "none";
-          inputTextElement.style.display = "none";
+          inputContainerElement.style.display = "none";
           cameraOn();
         } else if(radio == "barcode"){
           canvasElement.style.display = "none";
-          inputTextLabelElement.style.display = "none";
-          inputTextElement.style.display = "none";
+          inputContainerElement.style.display = "none";
         } else if(radio == "input"){
           canvasElement.style.display = "none";
-          inputTextLabelElement.style.display = "block";
-          inputTextElement.style.display = "block";
+          inputContainerElement.style.display = "block";
         }
         
     });
