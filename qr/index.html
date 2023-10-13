@@ -147,6 +147,7 @@
     }
 
     function qr() {
+      if(canvasElement.style.display == "none" || "qr" != document.querySelector('input[name="type"]:checked').value) return;
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         
         canvasElement.hidden = false;
@@ -173,7 +174,8 @@
     }
 
     function barcode(capturer){
-      if(canvasElement.style.display == "none") return;
+      
+      if(canvasElement.style.display == "none" || "barcode" != document.querySelector('input[name="type"]:checked').value) return;
     
       capturer.grabFrame().then((bitmap) => {
         canvasElement.height = 480;
