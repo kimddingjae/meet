@@ -92,8 +92,6 @@
         //라디오 버튼 값을 가져온다.
         var radio = this.value;
         if(radio == "qr" || radio == "barcode"){
-          canvasContainerElement.style.display = "block";
-          inputContainerElement.style.display = "none";
           cameraOn();
         } else if(radio == "input"){
           canvasContainerElement.style.display = "none";
@@ -124,11 +122,12 @@
       canvas.stroke();
     }
     function cameraOn() {
+      dataElement.value = "";
+      codeTextElement.style.display = "none";
+      canvasElement.style.display = "block";
+      reCameraElement.style.display = "none";
+      
       if("qr" == document.querySelector('input[name="type"]:checked').value){
-        dataElement.value = "";
-        codeTextElement.style.display = "none";
-        canvasElement.style.display = "block";
-        reCameraElement.style.display = "none";
         
         // Use facingMode: environment to attemt to get the front camera on phones
         navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
