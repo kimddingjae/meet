@@ -91,12 +91,8 @@
     $("input[name='type']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
         var radio = this.value;
-        if(radio == "qr"){
+        if(radio == "qr" || radio == "barcode"){
           canvasContainerElement.style.display = "block";
-          inputContainerElement.style.display = "none";
-          cameraOn();
-        } else if(radio == "barcode"){
-          canvasContainerElement.style.display = "none";
           inputContainerElement.style.display = "none";
           cameraOn();
         } else if(radio == "input"){
