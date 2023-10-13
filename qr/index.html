@@ -53,6 +53,7 @@
       <canvas id="canvas" style="display:block" ></canvas>
       <span id="codeText"></span>
       <button id="reCamera" onclick="cameraOn()">재촬영</button>
+      <span id="test"></span>
     </div>
     <div id="inputContainer" style="display:none">
       <label id="inputTextLabel" for="inputText" >입력 : </label>  
@@ -86,6 +87,7 @@
     var inputContainerElement = document.getElementById("inputContainer");
     var codeTextElement = document.getElementById("codeText");
     var reCameraElement = document.getElementById("reCamera");
+    var test = document.getElementById("test");
     
     $("input[name='type']:radio").change(function () {
         //라디오 버튼 값을 가져온다.
@@ -148,7 +150,7 @@
     function qr() {
       if(canvasElement.style.display == "none" || "qr" != document.querySelector('input[name="type"]:checked').value) return;
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        
+        test.innerText = "qr";
         canvasElement.hidden = false;
         canvasElement.height = 480;
         canvasElement.width = 640;
@@ -175,7 +177,7 @@
     function barcode(capturer){
       
       if(canvasElement.style.display == "none" || "barcode" != document.querySelector('input[name="type"]:checked').value) return;
-    
+      test.innerText = "barcode";
       capturer.grabFrame().then((bitmap) => {
         canvasElement.height = 480;
         canvasElement.width = 640;
