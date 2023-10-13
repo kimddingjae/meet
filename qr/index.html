@@ -94,7 +94,6 @@
         if(radio == "qr"){
           canvasContainerElement.style.display = "block";
           inputContainerElement.style.display = "none";
-          cameraOn();
         } else if(radio == "barcode"){
           canvasContainerElement.style.display = "none";
           inputContainerElement.style.display = "none";
@@ -102,7 +101,7 @@
           canvasContainerElement.style.display = "none";
           inputContainerElement.style.display = "block";
         }
-        
+        cameraOn();
     });
     
     cameraOn();
