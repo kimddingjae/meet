@@ -1,5 +1,5 @@
 <%@page language="java"%>
-<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page pageEncoding="UTF-8" language="java" contentType="text/html; charset=UTF-8"%>
 <%
  	request.setCharacterEncoding("UTF-8");
 %>
@@ -8,6 +8,7 @@
 <html>
 	<head>
 	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
 	  <style>
@@ -94,7 +95,7 @@
 	    var test = document.getElementById("test");
 	    
 	    $("input[name='type']:radio").change(function () {
-	        //�쇰���� 踰��� 媛��� 媛��몄�⑤��.
+
 	        var radio = this.value;
 	        if(radio == "qr" || radio == "barcode"){
 	          cameraOn();
