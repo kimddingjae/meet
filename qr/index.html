@@ -183,10 +183,10 @@
         var barcodeDetector = new BarcodeDetector();
         barcodeDetector.detect(bitmap)
           .then(barcodes => {
-            //document.getElementById("barcodes").innerHTML = barcodes.map(barcode => barcode.rawValue).join(', ');
+            var barcodeData = barcodes.map(barcode => barcode.rawValue).join(', ');
   	  
-  	  
-  	  if(document.getElementById("barcodes").innerHTML.trim() == "" || document.getElementById("barcodes").innerHTML == null){ 
+  	  alert(barcodeData);
+  	  if(barcodeData.trim() == "" || barcodeData == null){ 
   	    barcode(capturer);
   	  } else{
         dataElement.value = barcodes.map(barcode => barcode.rawValue).join(', ');
