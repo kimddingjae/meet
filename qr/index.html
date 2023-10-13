@@ -142,7 +142,7 @@
         canvasElement.style.display = "block";
         reCameraElement.style.display = "none";
       } else if("barcode" == document.querySelector('input[name="type"]:checked').value){
-         navigator.mediaDevices.getUserMedia(constrains).then((stream) => {
+         navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then((stream) => {
            let capturer = new ImageCapture(stream.getVideoTracks()[0]);
            barcode(capturer);
          });
