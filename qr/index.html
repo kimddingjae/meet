@@ -126,6 +126,10 @@
     function cameraOn() {
       if("qr" == document.querySelector('input[name="type"]:checked').value){
         dataElement.value = "";
+        codeTextElement.style.display = "none";
+        canvasElement.style.display = "block";
+        reCameraElement.style.display = "none";
+        
         // Use facingMode: environment to attemt to get the front camera on phones
         navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
           video.srcObject = stream;
@@ -134,9 +138,6 @@
           requestAnimationFrame(qr);
         });
   
-        codeTextElement.style.display = "none";
-        canvasElement.style.display = "block";
-        reCameraElement.style.display = "none";
       } else if("barcode" == document.querySelector('input[name="type"]:checked').value){
          navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then((stream) => {
            let capturer = new ImageCapture(stream.getVideoTracks()[0]);
@@ -178,14 +179,13 @@
       capturer.grabFrame().then((bitmap) => {
         canvasElement.height = 480;
         canvasElement.width = 640;
-        alert(bitmap.width);
+        
         canvas.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasElement .width, canvasElement .height);
         var barcodeDetector = new BarcodeDetector();
         barcodeDetector.detect(bitmap)
           .then(barcodes => {
             var barcodeData = barcodes.map(barcode => barcode.rawValue).join(', ');
   	  
-  	  alert(barcodeData);
   	  if(barcodeData.trim() == "" || barcodeData == null){ 
   	    barcode(capturer);
   	  } else{
