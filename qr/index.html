@@ -205,22 +205,9 @@
           });
       });
     }
-    var parentNexacro = null;
-	    var bInit = false;
-	    window.NEXACROHTML.Init = function(str) {
-
-	        var loopCnt = 0;
-	        var interval = setInterval(function() {            
-	            parentNexacro = window.NEXACROWEBBROWSER;
-	            //console.log("ParparentNexacroent:" + loopCnt + ":" + parentNexacro);      
-	        if(loopCnt >= 10 || parentNexacro) {
-	            bInit = true;
-	            clearInterval(interval);
-	            window.NEXACROHTML.FireUserNotify(str);
-	          }
-	            loopCnt++;
-	        }, 10);
-	    }
+    if (! window.NEXACROHTML) {
+			window.NEXACROHTML = {};
+		}
 		
 		window.NEXACROHTML.FireUserNotify = function(userdata)
 		{			
