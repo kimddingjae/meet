@@ -176,6 +176,9 @@
       if(canvasElement.style.display == "none") return;
     
       capturer.grabFrame().then((bitmap) => {
+        canvasElement.height = 480;
+        canvasElement.width = 640;
+        alert(bitmap.width);
         canvas.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasElement .width, canvasElement .height);
         var barcodeDetector = new BarcodeDetector();
         barcodeDetector.detect(bitmap)
