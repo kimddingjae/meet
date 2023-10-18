@@ -42,16 +42,19 @@
 
 <body>
   <div id="scanner-container"></div>
+  <div id="selectedImageContainer"></div>
   <div id="buttonContainer">
-    <button id="startButton" onclick="startScanner()">시작</button>
+    <button id="startButton" onclick="startScanner()">촬영</button>
     <button id="stopButton" onclick="stopScanner()" class="hidden">종료</button>
   </div>
-  <div id="selectedImageContainer"></div>
+  <div id="data"> "result : "</div>
+  
 
 <script>
   var scannerIsRunning = false;	// 스캐너 실행상태
   var previousBarcode = ""; 	// 정합성을 위하여 이전 바코드 스캔값을 저장
-
+  var data = document.getElementById("data");
+	
   //시작버튼을 클릭하면 startScanner 함수 호출
   function startScanner() {
 	  
@@ -113,7 +116,7 @@
           
           //정상적으로 준비되면 콘솔에 아래 문구 표시
           console.log("스캐너 준비 완료");
-          
+          data.innerText = "result : ";
           //스캐너 시작
           Quagga.start();
           
@@ -224,7 +227,8 @@
     previousBarcode = barcodeValue;
 
     if (consecutiveMatches === targetMatches) {
-      alert("바코드 값: " + barcodeValue);      
+      data.innerText = barcodeValue;
+      stopScanner();
     }
   });
 </script>
