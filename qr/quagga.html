@@ -5,7 +5,7 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./quagga.min.js"></script>
+    //<script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
     <style>
         /* In order to place the tracking correctly */
         canvas.drawing, canvas.drawingBuffer {
@@ -24,7 +24,7 @@
     </div>
     <input type="button" id="btn" value="초기화" />
     <!-- Include the image-diff library -->
-    <script src="quagga.min.js"></script>
+    <script src="./quagga.min.js"></script>
 
     <script>
         var _scannerIsRunning = false;
@@ -86,7 +86,7 @@
                 _scannerIsRunning = true;
             });
             
-            /*
+            
             Quagga.onProcessed(function (result) {
                 var drawingCtx = Quagga.canvas.ctx.overlay,
                 drawingCanvas = Quagga.canvas.dom.overlay;
@@ -117,7 +117,7 @@
                     }
                 }
             });
-            */
+            
 
             Quagga.onDetected(function (result) {                
                   test.innerText = "result : " + result.codeResult.code;
