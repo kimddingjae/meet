@@ -20,6 +20,7 @@
     <!-- Div to show the scanner -->
     <div id="scanner-container"></div>
     <div>
+    <div id="color" > borderColor : </div>    
     <div id="test" style="width:300px;height:100px;fontSize:20px"> result : </div>
     </div>
     <input type="button" id="btn" value="초기화" />
@@ -30,6 +31,8 @@
     <script>
         var _scannerIsRunning = false;
         var test = document.getElementById("test");
+        var color = document.getElementById("color");
+        var gubun = "";
         
         function startScanner() {
             Quagga.init({
@@ -94,15 +97,18 @@
                         result.boxes.filter(function (box) {
                             return box !== result.box;
                         }).forEach(function (box) {
+                            gubun = "green";
                             Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
                         });
                     }
 
                     if (result.box) {
+                        gubun = "other";
                         Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
                     }
 
                     if (result.codeResult && result.codeResult.code) {
+                        gubun = "red";
                         Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
                     }
                 }
@@ -110,6 +116,7 @@
 
 
             Quagga.onDetected(function (result) {
+                color.innerText = "borderColor : " + gubun ;
                 test.innerText = "result : " + result.codeResult.code;
             });
         }
