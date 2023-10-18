@@ -21,20 +21,14 @@
     <div id="scanner-container"></div>
     <input type="button" id="btn" value="Start/Stop the scanner" />
     <div>
-    <div id="result" style="width:300px;height:100px;fontSize:20px"> result : </div>
-    <div id="green" style="width:300px;height:100px;fontSize:20px"> green : </div>
-    <div id="red" style="width:300px;height:100px;fontSize:20px"> red : </div>
-    <div id="other" style="width:300px;height:100px;fontSize:20px"> other : </div>
+    <div id="data" style="width:300px;height:100px;fontSize:20px"> result : </div>
     </div>
     <!-- Include the image-diff library -->
     <script src="quagga.min.js"></script>
 
     <script>
         var _scannerIsRunning = false;
-        var green = document.getElementById("green");
-        var red = document.getElementById("red");
-        var other = document.getElementById("other");
-        var result = document.getElementById("result");
+        var data = document.getElementById("data");
         var gubun = "";
         
         function startScanner() {
@@ -59,7 +53,9 @@
                         "codabar_reader",
                         "upc_reader",
                         "upc_e_reader",
-                        "i2of5_reader"
+                        "i2of5_reader",
+                        "qr_reader"
+                        
                     ],
                     debug: {
                         showCanvas: true,
@@ -89,51 +85,42 @@
                 // Set flag to is running
                 _scannerIsRunning = true;
             });
-
+            
+            /*
             Quagga.onProcessed(function (result) {
                 var drawingCtx = Quagga.canvas.ctx.overlay,
                 drawingCanvas = Quagga.canvas.dom.overlay;
 
                 if (result) {
-                    //console.log(result.codeResult)
+                    
                     if (result.boxes) {
+                        //console.log("green")    
                         drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+                        gubun = "green";
                         result.boxes.filter(function (box) {
                             return box !== result.box;
-                        }).forEach(function (box) {
-                            gubun = "green";
+                        }).forEach(function (box) {    
                             Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
                         });
                     }
 
                     if (result.box) {
+                        //console.log("other")
                         gubun = "other";
                         Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
                     }
 
                     if (result.codeResult && result.codeResult.code) {
+                        //console.log("red")
                         gubun = "red";
                         Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
                     }
                 }
             });
+            */
 
-
-            Quagga.onDetected(function (result) {
-                console.log(result.codeResult)
-                  result.innerText = "result : " + result.codeResult.code;
-                if(gubun == "green"){
-                  green.innerText = "result : " + result.codeResult.code;
-                }
-                if(gubun == "other"){
-                  other.innerText = "result : " + result.codeResult.code;
-                }
-                if(gubun == "red"){
-                  red.innerText = "result : " + result.codeResult.code;
-                }
-                
-                
-                //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
+            Quagga.onDetected(function (result) {                
+                  data.innerText = "result : " + result.codeResult.code;
             });
         }
 
