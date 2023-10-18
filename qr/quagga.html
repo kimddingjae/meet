@@ -108,6 +108,7 @@
                     }
 
                     if (result.codeResult && result.codeResult.code) {
+                        console.log(result.codeResult)
                         gubun = "red";
                         Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
                     }
