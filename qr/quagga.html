@@ -117,8 +117,10 @@
 
 
             Quagga.onDetected(function (result) {
-                color.innerText = "borderColor : " + gubun ;
-                test.innerText = "result : " + result.codeResult.code;
+                if(gubun == "red"){
+                    color.innerText = "borderColor : " + gubun ;
+                    test.innerText = "result : " + result.codeResult.code;
+                }
             });
         }
         startScanner();
