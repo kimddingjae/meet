@@ -208,7 +208,7 @@
   //바코드 스캔값이 연속하여 targetMatches과 같다면
   //경고창에 바코드 값 출력
   var consecutiveMatches = 0; // 연속 일치 횟수
-  var targetMatches = 30; // 목표 일치 횟수
+  var targetMatches = 10; // 목표 일치 횟수
 
   Quagga.onDetected(function (result) {
     var barcodeValue = result.codeResult.code;
