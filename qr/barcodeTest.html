@@ -36,6 +36,10 @@
       z-index: 1;
     }
 
+    video {
+	playsinline: true;
+    }
+
     #data {
 	width: 300px;
 	height: 200px;
@@ -130,7 +134,7 @@
           scannerIsRunning = true;
 
 	  scanner.classList.remove("hidden");
-	  document.getElementsByTagName("video").setAttribute("playsinline", true);
+	  
           //시작버튼 숨김
           document.getElementById("startButton").classList.add("hidden");
           
