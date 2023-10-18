@@ -11,6 +11,7 @@
       position: relative;
       width: 100%;
       height: calc(100% - 60px); /* 시작종료 버튼을 표시하기 위해서 위치 계산 */
+      display: block;
     }
 
     #selectedImageContainer {
@@ -35,6 +36,12 @@
       left: 0;
       z-index: 1;
     }
+
+    #data {
+	width: 300px;
+	height: 200px;
+	font-size:20px;    
+    }
   </style>
 </head>
 
@@ -52,6 +59,7 @@
   var scannerIsRunning = false;	// 스캐너 실행상태
   var previousBarcode = ""; 	// 정합성을 위하여 이전 바코드 스캔값을 저장
   var data = document.getElementById("data");
+  var scanner = documnet.getElementById("scanner-container");
 	
   //시작버튼을 클릭하면 startScanner 함수 호출
   function startScanner() {
@@ -115,12 +123,14 @@
           //정상적으로 준비되면 콘솔에 아래 문구 표시
           console.log("스캐너 준비 완료");
           data.innerText = "result : ";
+	  
           //스캐너 시작
           Quagga.start();
           
           //변수값 변경
           scannerIsRunning = true;
-          
+
+	  scanner.classList.remove("hidden");
           //시작버튼 숨김
           document.getElementById("startButton").classList.add("hidden");
           
@@ -142,7 +152,8 @@
       
       //스캐너 상태값 변경
       scannerIsRunning = false;
-      
+
+      scanner.classList.add("hidden");
       //시작버튼 표시 (class 값의 hidden 삭제)
       document.getElementById("startButton").classList.remove("hidden");
       
@@ -225,7 +236,7 @@
     previousBarcode = barcodeValue;
 
     if (consecutiveMatches === targetMatches) {
-      data.innerText = barcodeValue;
+      data.innerText = "result : " + barcodeValue;
       stopScanner();
     }
   });
