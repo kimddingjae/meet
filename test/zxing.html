@@ -7,92 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
 </head>
-<!--
+
 <body>
-<div class="section_scanner">
+  <video id="webcam-preview"></video>
+<p id="result"></p>
+  
+  
+<script>
+  const codeReader = new ZXing.BrowserQRCodeReader();
 
-                  <div class="btn_scanner">
-                    <a class="button" id="startButton">أبدأ التشغيل</a>
-                    <a class="button" id="resetButton">أعادةتشغيل</a>
-                  </div>
-           
-           
-              <div style="padding: 0px; width: 100%; max-height: 200px; overflow:hidden; border: 1px solid gray">
-                    <video id="video" style="width: 100%;"></video>
-                </div>
-               
-     
-                  <div id="sourceSelectPanel" style="display:none">
-                    <label for="sourceSelect" id="label_video">تغيير مصدر الفيديو</label>
-                    <select id="sourceSelect" style="max-width:400px">
-                    </select>
-                  </div>
+  codeReader.decodeFromVideoDevice(null, 'webcam-preview', (result, err) => {
+    if (result) {
+      // properly decoded qr code
+      console.log('Found QR code!', result)
+      document.getElementById('result').textContent = result.text
+    }
 
-  </div>
-    <form action="config369.php" method="post">
-      <input type="text" name="scan2" id="result" value="">
-      <button id="btn2" name="sub">start</button><br><br>
-     
-  </form>
-    <!-- </main> -->
+    if (err) {
+      // As long as this error belongs into one of the following categories
+      // the code reader is going to continue as excepted. Any other error
+      // will stop the decoding loop.
+      //
+      // Excepted Exceptions:
+      //
+      //  - NotFoundException
+      //  - ChecksumException
+      //  - FormatException
 
+      if (err instanceof ZXing.NotFoundException) {
+        console.log('No QR code found.')
+      }
 
-        <!--<script type="text/javascript" src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>-->
-                      <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
+      if (err instanceof ZXing.ChecksumException) {
+        console.log('A code was found, but it\'s read value was not valid.')
+      }
 
+      if (err instanceof ZXing.FormatException) {
+        console.log('A code was found, but it was in a invalid format.')
+      }
+    }
+  })
 
-        <script type="text/javascript">
-          window.addEventListener('load', function () {
-            let selectedDeviceId;
-            const codeReader = new ZXing.BrowserMultiFormatReader()
-            console.log('ZXing code reader initialized')
-            codeReader.listVideoInputDevices()
-              .then((videoInputDevices) => {
-                const sourceSelect = document.getElementById('sourceSelect')
-                selectedDeviceId = videoInputDevices[0].deviceId
-                if (videoInputDevices.length >= 1) {
-                  videoInputDevices.forEach((element) => {
-                    const sourceOption = document.createElement('option')
-                    sourceOption.text = element.label
-                    sourceOption.value = element.deviceId
-                    sourceSelect.appendChild(sourceOption)
-                  })
-     
-                  sourceSelect.onchange = () => {
-                    selectedDeviceId = sourceSelect.value;
-                  };
-     
-                  const sourceSelectPanel = document.getElementById('sourceSelectPanel')
-                //   sourceSelectPanel.style.display = 'block'
-                }
-     
-                document.getElementById('startButton').addEventListener('click', () => {
-                  codeReader.decodeOnceFromVideoDevice(undefined, 'video').then((result) => {
-
-                  // codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-                    if (result) {
-                      console.log(result)
-                      document.getElementById('result').value= result.text
-                    }
-                    if (err && !(err instanceof ZXing.NotFoundException)) {
-                      console.error(err)
-                      document.getElementById('result').textContent = err
-                    }
-                  })
-                  console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
-                })
-     
-                document.getElementById('resetButton').addEventListener('click', () => {
-                  codeReader.reset()
-                  document.getElementById('result').textContent = '';
-                  console.log('Reset.')
-                })
-     
-              })
-              .catch((err) => {
-                console.error(err)
-              })
-          })
-        </script>
+</script>
+<script src="./jsQR.js"></script>
 </body>
 </html>
