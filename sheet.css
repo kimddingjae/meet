@@ -1,8 +1,8 @@
-.container_main{
+.container,#main{
    display: grid;
   grid-template-columns: 500px 100px;
 }
-.container {
+.container#sub {
   display: grid;
   /*grid-template-columns: repeat(9, 1fr 1fr 1fr);*/
   grid-template-columns: 100px 300px;
