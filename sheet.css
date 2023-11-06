@@ -1,7 +1,7 @@
 .container,#main{
-   display: grid;
-  grid-template-columns: 500px 100px;
-}
+      display: grid;
+     grid-template-columns: 850px 100px;
+   }
 .container#sub {
   display: grid;
   /*grid-template-columns: repeat(9, 1fr 1fr 1fr);*/
@@ -19,4 +19,9 @@
     -o-transform: scale(0.9);
     -webkit-transform: scale(0.9);
   }
+
+   .container,#main{
+      display: grid;
+     grid-template-columns: 360px 100px;
+   }
 }
