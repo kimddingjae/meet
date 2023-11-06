@@ -77,10 +77,16 @@ function processRows(json) {
     const keys = Object.keys(row);
    
     keys.forEach((key) => {
-      console.log(key)
+      
       const td = document.createElement("td");
       td.style.border = "5px";
-      td.textContent = row[key];
+      if(key=="번호"){
+        const a = document.createElement("a");
+        a.href="tel:" + row[key];
+        td.appenChild(a);
+      } else{
+        td.textContent = row[key];
+      }
       tr.appendChild(td);
     });
     output.appendChild(tr);
