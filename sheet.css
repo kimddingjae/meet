@@ -1,11 +1,13 @@
 .container,#main{
-      display: grid;
+     display: grid;
      grid-template-columns: 850px 100px;
+     margin-left: 0px;
    }
 .container#sub {
   display: grid;
   /*grid-template-columns: repeat(9, 1fr 1fr 1fr);*/
   grid-template-columns: 100px 300px;
+  margin-left: 0px;    
 }
 .item {
   border: 1px;
