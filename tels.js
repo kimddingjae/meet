@@ -80,13 +80,15 @@ function processRows(json) {
       
       const td = document.createElement("td");
       td.style.border = "5px";
+      td.textContent = row[key];
       if(key=="번호"){
-        const a = document.createElement("a");
+        td.style.curosr = "pointer";
+        td.onclick = function(){
+          document.location.href='tel:' + row[key];
+        }
         a.href="tel:" + row[key];
-        td.innerHTML(a);
-      } else{
-        td.textContent = row[key];
-      }
+        
+      } 
       tr.appendChild(td);
     });
     output.appendChild(tr);
