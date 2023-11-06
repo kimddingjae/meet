@@ -82,7 +82,7 @@ function processRows(json) {
       td.style.border = "5px";
       td.textContent = row[key];
       if(key=="번호"){
-        td.style.curosr = "pointer";
+        td.style.cursor = "pointer";
         td.onclick = function(){
           document.location.href='tel:' + row[key];
         }        
