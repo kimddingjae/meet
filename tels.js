@@ -75,7 +75,7 @@ function processRows(json) {
     const tr = document.createElement("tr");
 
     const keys = Object.keys(row);
-
+   console.log(keys)
     keys.forEach((key) => {
       const td = document.createElement("td");
       td.style.border = "5px";
