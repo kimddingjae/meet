@@ -85,10 +85,9 @@ function processRows(json) {
         td.style.curosr = "pointer";
         td.onclick = function(){
           document.location.href='tel:' + row[key];
-        }
-        a.href="tel:" + row[key];
-        
-      } 
+        }        
+      }
+      
       tr.appendChild(td);
     });
     output.appendChild(tr);
