@@ -1,3 +1,7 @@
+.container_main{
+   display: grid;
+  grid-template-columns: 500px 100px;
+}
 .container {
   display: grid;
   /*grid-template-columns: repeat(9, 1fr 1fr 1fr);*/
