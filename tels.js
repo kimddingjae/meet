@@ -83,7 +83,7 @@ function processRows(json) {
       if(key=="번호"){
         const a = document.createElement("a");
         a.href="tel:" + row[key];
-        td.appenChild(a);
+        td.innerHtml(a);
       } else{
         td.textContent = row[key];
       }
