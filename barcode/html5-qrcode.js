@@ -25,9 +25,9 @@ const html5QrCode = new Html5Qrcode("reader");
 
 // if you scanned , it will be write in clear text in your input field which in my case 'result'
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-    document.getElementById('result').value = decodedText;
+    alert(decodedText)
 };
-const config = { fps: 200, qrbox: 200 };
+const config = { fps: 200, qrbox: 400 };
 
 // prefer the back camera else the front one 
 html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
