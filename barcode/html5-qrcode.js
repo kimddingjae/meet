@@ -3,7 +3,7 @@ const html5QrCode = new Html5Qrcode("reader");
 
 // if you scanned , it will be write in clear text in your input field which in my case 'result'
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-    alert(decodedText)
+    alert(decodedText);
     //document.getElementById('result').value = decodedText;
 };
 const config = { fps: 5, qrbox: 200 };
