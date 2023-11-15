@@ -3,6 +3,7 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
         
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
+    alert(decodedText)
     console.log(`Scan result: ${decodedText}`, decodedResult);
     // ...
     html5QrcodeScanner.clear();
