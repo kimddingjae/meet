@@ -34,9 +34,9 @@ let config = {
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config, /* verbose= */ false);
-html5QrcodeScanner.render(onScanSuccess);
+html5QrcodeScanner.render({ facingMode: { exact: "environment" } },onScanSuccess);
 
-const start = document.getElementById('html5-qrcode-button-camera-permission');
-start.click();
+//const start = document.getElementById('html5-qrcode-button-camera-permission');
+//start.click();
 
 
