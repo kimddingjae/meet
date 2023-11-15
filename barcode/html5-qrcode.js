@@ -36,6 +36,14 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
 html5QrcodeScanner.render(onScanSuccess);
 
+document.getElementById('html5-qrcode-select-camera').onchange = function() {homzzang()};
+
+function homzzang() {
+
+    var x = document.getElementById("html5-qrcode-select-camera");
+    alert(x.value);
+}
+
 /*
 const start = document.getElementById('html5-qrcode-button-camera-permission');
 start.click();
