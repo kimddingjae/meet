@@ -13,11 +13,7 @@ const scanner = new Html5QrcodeScanner('reader', {
                     height: 200,
                 },
                 fps: 5,
-    /*
-                videoConstraints: {
-                    facingMode: { exact: "environment" },
-                },
-                */
+               videoConstraints: { facingMode: { exact: "environment" } },
             },
             false)
 scanner.render(onScanSuccess);
