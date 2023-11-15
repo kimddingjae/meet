@@ -11,6 +11,12 @@ const config = { fps: 10, qrbox: 400 };
 // prefer the back camera else the front one 
 html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
+const start = document.getElementById('html5-qrcode-button-camera-permission');
+start.click();
+
+const select = document.getElementById('html5-qrcode-select-camera');
+select.click();
+
 
 /*
 function onScanSuccess(decodedText, decodedResult) {
