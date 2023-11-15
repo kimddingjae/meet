@@ -1,4 +1,4 @@
-
+/*
 const html5QrCode = new Html5Qrcode("reader");
 
 // if you scanned , it will be write in clear text in your input field which in my case 'result'
@@ -16,9 +16,9 @@ start.click();
 
 const select = document.getElementById('html5-qrcode-select-camera');
 select.click();
+*/
 
 
-/*
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   alert(decodedText);
@@ -38,5 +38,8 @@ html5QrcodeScanner.render(onScanSuccess);
 
 //const start = document.getElementById('html5-qrcode-button-camera-permission');
 //start.click();
-*/
+
+const select = document.getElementById('html5-qrcode-select-camera');
+select.click();
+
 
