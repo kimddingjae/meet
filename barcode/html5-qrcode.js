@@ -18,7 +18,7 @@ const select = document.getElementById('html5-qrcode-select-camera');
 select.click();
 */
 var html5QrCode = new Html5Qrcode("reader");
-    const config = { fps: 15, qrbox: 80% };
+    const config = { fps: 15, qrbox: 500 };
     
     function qrCodeSuccessCallback(successMessage) {
        alert(successMessage)
