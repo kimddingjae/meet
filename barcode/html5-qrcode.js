@@ -17,13 +17,19 @@ start.click();
 const select = document.getElementById('html5-qrcode-select-camera');
 select.click();
 */
-
+var html5QrCode = new Html5Qrcode("reader");
+    const config = { fps: 15, qrbox: 200 };
+    
+    function qrCodeSuccessCallback(successMessage) {
+       console.log(successMessage)
+    };
+    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
 
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   alert(decodedText);
 }
-
+/*
 let config = {
   fps: 10,
   qrbox: {width: 200, height: 200}
@@ -39,8 +45,6 @@ html5QrcodeScanner.render(onScanSuccess);
 var select = document.getElementsByTagName("select").value;
 alert(select)
     
-
-/*
 const start = document.getElementById('html5-qrcode-button-camera-permission');
 start.click();
 
