@@ -21,15 +21,16 @@ var html5QrCode = new Html5Qrcode("reader");
     const config = { fps: 15, qrbox: 200 };
     
     function qrCodeSuccessCallback(successMessage) {
-       console.log(successMessage)
+       alert(successMessage)
     };
     html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
 
+/*
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   alert(decodedText);
 }
-/*
+
 let config = {
   fps: 10,
   qrbox: {width: 200, height: 200}
