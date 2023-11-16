@@ -33,8 +33,8 @@ let config = {
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
-html5QrcodeScanner.render(onScanSuccess);
-alert(html5QrcodeScanner.render(onScanSuccess));
+const test = html5QrcodeScanner.render(onScanSuccess);
+alert(test);
 /*
 var select = document.getElementsByTagName("select").value;
 alert(select)
