@@ -27,8 +27,8 @@ function onScanSuccess(decodedText, decodedResult) {
 
 let config = {
   fps: 10,
-  qrbox: {width: 200, height: 200}
-  //rememberLastUsedCamera: true,
+  qrbox: {width: 400, height: 400}
+  rememberLastUsedCamera: true,
   // Only support camera scan type.
   //supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 };
