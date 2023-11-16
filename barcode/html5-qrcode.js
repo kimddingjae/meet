@@ -17,15 +17,9 @@ start.click();
 const select = document.getElementById('html5-qrcode-select-camera');
 select.click();
 */
-var html5QrCode = new Html5Qrcode("reader");
-    const config = { fps: 15, qrbox: 500 };
-    
-    function qrCodeSuccessCallback(successMessage) {
-       alert(successMessage)
-    };
-    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
 
-/*
+
+
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   alert(decodedText);
@@ -42,7 +36,7 @@ let config = {
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
 html5QrcodeScanner.render(onScanSuccess);
-
+/*
 var select = document.getElementsByTagName("select").value;
 alert(select)
     
