@@ -35,9 +35,7 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
 html5QrcodeScanner.render(onScanSuccess);
 
-$('#html5-qrcode-button-camera-start').on('click', function() {
-	alert("target");
-});
+
 /*
 var select = document.getElementsByTagName("select").value;
 alert(select)
