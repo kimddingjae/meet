@@ -34,10 +34,11 @@ let config = {
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
 
+/*
 $('#html5-qrcode-select-camera').on('click', function() {
 	alert("target");
 });
-/*
+
 var select = document.getElementsByTagName("select").value;
 alert(select)
     
