@@ -18,19 +18,6 @@ const select = document.getElementById('html5-qrcode-select-camera');
 select.click();
 */
 
-navigator.mediaDevices
-  .enumerateDevices()
-  .then(function (devices) {
-    devices.forEach(function (device) {
-      alert(
-        device.kind + ": " + device.label + " id = " + device.deviceId,
-      );
-    });
-  })
-  .catch(function (err) {
-    console.log(err.name + ": " + err.message);
-  });
-
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   alert(decodedText);
@@ -47,6 +34,7 @@ let config = {
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
 html5QrcodeScanner.render(onScanSuccess);
+alert(html5QrcodeScanner.render(onScanSuccess);)
 /*
 var select = document.getElementsByTagName("select").value;
 alert(select)
