@@ -33,7 +33,7 @@ let config = {
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader", config,  false);
-html5QrcodeScanner.render(onScanSuccess);
+//html5QrcodeScanner.render(onScanSuccess);
 
 
 /*
