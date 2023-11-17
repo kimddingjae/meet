@@ -4,7 +4,7 @@
   
   function reCamera(){
     scannerIsRunning = false;
-    start_qr();
+    //start_qr();
   }
   
   function load(){
