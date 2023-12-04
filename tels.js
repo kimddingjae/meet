@@ -95,5 +95,7 @@ function processRows(json) {
 }
 
 function close(){
-  window.parent.close();
+  alert("닫기");
+  const modal = document.querySelector(".modal");
+  console.log(modal)
 }
