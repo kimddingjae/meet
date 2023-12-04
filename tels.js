@@ -95,5 +95,5 @@ function processRows(json) {
 }
 
 function close(){
-  opener.parent.close();
+  window.parent.close();
 }
