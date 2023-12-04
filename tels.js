@@ -93,3 +93,7 @@ function processRows(json) {
     output.appendChild(tr);
   });
 }
+
+function close(){
+  opener.parent.close();
+}
