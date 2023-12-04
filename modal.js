@@ -3,11 +3,7 @@ const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".btn-open-popup");
 
 function close(){
-  modal.classList.toggle("show");
-
-  if (modal.classList.contains("show")) {
-    body.style.overflow = "hidden";
-  }
+  modal.click();
 }
 
 btnOpenPopup.addEventListener("click", () => {
