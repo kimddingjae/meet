@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", init);
 
 x.addEventListener("click", () => {
   alert("닫기")
+  const modal = document.querySelector(".modal");
+  console.log(modal)
 });
 
 const output = document.querySelector(".output");
@@ -100,7 +102,4 @@ function processRows(json) {
 }
 
 function close(){
-  alert("닫기");
-  const modal = document.querySelector(".modal");
-  console.log(modal)
 }
