@@ -23,7 +23,7 @@
   width: 400px;
   height: 610px;
 
-  padding: 40px;
+  padding: 10px;
 
   text-align: center;
 
@@ -75,6 +75,13 @@ table th {
   width: 30px;
   border: none;
   border-radius: 50%;
+}
+.link{
+  display: block;
+  width: 100%;
+  height: 90%
+  border: none
+  padding-top: 10px;
 }
 
 .x {position:relative;float:right;display:inline-block;*display:inline;width:30px;height:30px;text-align:center;margin-right:20px;}
