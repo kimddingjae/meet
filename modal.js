@@ -6,14 +6,21 @@ const btnOpenPopup = document.querySelector(".btn-open-popup");
 
 function handleDocHeightMsg(eventObj) { // 메시지 수신 처리를 위한 함수
     modal.classList.toggle("show");
+    body.style.overflow = "auto";
 }
 
 btnOpenPopup.addEventListener("click", () => {
   modal.classList.toggle("show");
+  if (modal.classList.contains("show")) {
+    body.style.overflow = "hidden";
+  }
 });
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.classList.toggle("show");
+    if (!modal.classList.contains("show")) {
+      body.style.overflow = "auto";
+    }
   }
 });
