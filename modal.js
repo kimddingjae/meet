@@ -3,6 +3,7 @@ const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".btn-open-popup");
 
 function close(){
+  alert("닫기");
   modal.classList.toggle("show");
   body.style.overflow = "auto";
 }
