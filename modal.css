@@ -77,6 +77,6 @@ table th {
   border-radius: 50%;
 }
 
-.x {position:relative;float:left;display:inline-block;*display:inline;width:30px;height:30px;text-align:center;margin-right:20px;}
+.x {position:relative;float:right;display:inline-block;*display:inline;width:30px;height:30px;text-align:center;margin-right:20px;}
 
 .x3:after {content: "\00d7"; font-size:30pt;line-height:35px;}
