@@ -10,8 +10,6 @@ const data = [];
 document.addEventListener("DOMContentLoaded", init);
 
 x.addEventListener("click", () => {
-  var modal = document.getElementsByClassName("modal");
-  console.log(modal);
   window.parent.postMessage('x', '*'); // 메시지 전송
 });
 
