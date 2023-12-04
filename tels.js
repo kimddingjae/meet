@@ -2,11 +2,16 @@
 
 const base = `https://docs.google.com/spreadsheets/d/1C_tPlxxIRJc1Mx2W0vgTLPm4f9Rvtx4QIThsoGZoJBs/gviz/tq?`;
 
+const x = document.querySelector(".x");
 const sheetName = "연락망";
 const query = encodeURIComponent("Select *");
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 const data = [];
 document.addEventListener("DOMContentLoaded", init);
+
+x.addEventListener("click", () => {
+  alert("닫기")
+});
 
 const output = document.querySelector(".output");
 
