@@ -2,6 +2,10 @@ const body = document.querySelector("body");
 const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".btn-open-popup");
 
+function close(){
+  modal.classList.toggle("show");
+}
+
 btnOpenPopup.addEventListener("click", () => {
   modal.classList.toggle("show");
 });
