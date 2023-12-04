@@ -84,6 +84,6 @@ table th {
   padding-top: 10px;
 }
 
-.x {position:relative;float:right;display:inline-block;*display:inline;width:30px;height:30px;text-align:center;margin-right:20px;}
+.x {position:absolute;float:right;display:inline-block;*display:inline;width:30px;height:30px;text-align:center;margin-right:20px;}
 
 .x3:after {content: "\00d7"; font-size:30pt;line-height:35px;}
