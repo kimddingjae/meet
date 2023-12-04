@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", init);
 x.addEventListener("click", () => {
   var modal = document.getElementsByClassName("modal");
   console.log(modal);
+  window.parent.postMessage('test', '*'); // 메시지 전송
 });
 
 const output = document.querySelector(".output");
