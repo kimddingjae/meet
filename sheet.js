@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 function init() {
   let url = `${base}&sheet=${combo.value}&tq=${query}`;
-  console.log(url);
+  
   const outputChild = document.createElement("table");
   outputChild.className = "output";
   container.prepend(outputChild);
@@ -59,7 +59,7 @@ function init() {
         const row = {};
         colz.forEach((ele, ind) => {
           row[ele] = rowData.c[ind] != null ? rowData.c[ind].v : "";
-          console.log(row[ele])
+          
           if (row[ele] === null || row[ele] === undefined || row[ele] === 0 )
             row[ele] = "";          
           
