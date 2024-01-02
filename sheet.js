@@ -60,11 +60,16 @@ function init() {
         colz.forEach((ele, ind) => {
           row[ele] = rowData.c[ind] != null ? rowData.c[ind].v : "";
           console.log(row[ele])
-          if (row[ele] === null || row[ele] === undefined || row[ele] === 0 || row[ele] == "완납2")
+          if (row[ele] === null || row[ele] === undefined || row[ele] === 0 || row[ele] == 4)
             row[ele] = "";          
           
-          if (typeof row[ele] === "number" || row[ele] == "완납") {
-            row[ele] = row[ele].toLocaleString("ko-KR");
+          if (typeof row[ele] === "number") {
+            if(row[ele] == 3){
+              row[ele] = "완납";
+            }
+            else {
+              row[ele] = row[ele].toLocaleString("ko-KR");
+            }
           } 
         });
         data.push(row);
