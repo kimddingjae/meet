@@ -59,6 +59,7 @@ function init() {
         const row = {};
         colz.forEach((ele, ind) => {
           row[ele] = rowData.c[ind] != null ? rowData.c[ind].v : "";
+          console.log(row[ele])
           if (row[ele] === null || row[ele] === undefined || row[ele] === 0 || row[ele] == "완납2")
             row[ele] = "";          
           
