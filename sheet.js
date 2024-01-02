@@ -60,11 +60,11 @@ function init() {
         colz.forEach((ele, ind) => {
           row[ele] = rowData.c[ind] != null ? rowData.c[ind].v : "";
           console.log(row[ele])
-          if (row[ele] === null || row[ele] === undefined || row[ele] === 0 || row[ele] == 4)
+          if (row[ele] === null || row[ele] === undefined || row[ele] === 0 )
             row[ele] = "";          
           
           if (typeof row[ele] === "number") {
-            if(row[ele] == 3){
+            if(row[ele] == 220000){
               row[ele] = "완납";
             }
             else {
