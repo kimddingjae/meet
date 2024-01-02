@@ -61,9 +61,13 @@ function init() {
           row[ele] = rowData.c[ind] != null ? rowData.c[ind].v : "";
           if (row[ele] === null || row[ele] === undefined || row[ele] === 0)
             row[ele] = "";
-          if (typeof row[ele] === "number") {
-            row[ele] = row[ele].toLocaleString("ko-KR");
+          if (row[ele] == "완납2"){
+            row[ele] = "";
           }
+          
+          if (typeof row[ele] === "number" || row[ele] = "완납") {
+            row[ele] = row[ele].toLocaleString("ko-KR");
+          } 
         });
         data.push(row);
       });
