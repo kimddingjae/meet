@@ -59,11 +59,8 @@ function init() {
         const row = {};
         colz.forEach((ele, ind) => {
           row[ele] = rowData.c[ind] != null ? rowData.c[ind].v : "";
-          if (row[ele] === null || row[ele] === undefined || row[ele] === 0)
-            row[ele] = "";
-          if (row[ele] == "완납2"){
-            row[ele] = "";
-          }
+          if (row[ele] === null || row[ele] === undefined || row[ele] === 0 || row[ele] == "완납2")
+            row[ele] = "";          
           
           if (typeof row[ele] === "number" || row[ele] = "완납") {
             row[ele] = row[ele].toLocaleString("ko-KR");
