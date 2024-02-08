@@ -30,7 +30,7 @@ button:active {
 }
 
 #main {
-  width: 380px;
+  width: 300px;
   overflow: hidden;
   display: flex;
   align-items: center;
