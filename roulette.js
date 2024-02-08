@@ -42,7 +42,7 @@ x.addEventListener("click", () => {
 });
 
 const showImg = () => {
-  window.href = "./img/" + result + ".jpg";
+  window.href = "https://kimddingjae.github.io/meet/img/" + result + ".jpg";
   // $(".link").attr("src", "./img/" + result + ".jpg");
 
   // modal.classList.toggle("show");
