@@ -1,10 +1,10 @@
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
 const main = document.querySelector("#main");
-const body = document.querySelector("body");
-const modal = document.querySelector(".modal");
+//let body = document.querySelector("body");
+//const modal = document.querySelector(".modal");
 const link = document.querySelector(".link");
-const x = document.querySelector(".x");
+
 let result = "";
 let cnt = 0;
 
@@ -36,19 +36,15 @@ const colors = [
   "#e7167b",
 ];
 
-x.addEventListener("click", () => {
-  modal.classList.toggle("show");
-  body.style.overflow = "auto";
-});
-
 const showImg = () => {
-  window.href = "https://kimddingjae.github.io/meet/img/" + result + ".jpg";
-  // $(".link").attr("src", "./img/" + result + ".jpg");
+  localStorage.setItem("result", result);
 
-  // modal.classList.toggle("show");
-  // if (modal.classList.contains("show")) {
-  //   body.style.overflow = "hidden";
-  // }
+  $(".link").attr("src", "./img/rouletteImg.html");
+
+  modal.classList.toggle("show");
+  if (modal.classList.contains("show")) {
+    body.style.overflow = "hidden";
+  }
 };
 
 modal.addEventListener("click", (event) => {
@@ -128,7 +124,6 @@ const rotate = () => {
 
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
-    console.log(chkArr[ran]);
     result = chkArr[ran];
     setTimeout(() => showImg(), 2000);
   }, 1);

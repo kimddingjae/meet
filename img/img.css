@@ -1,0 +1,22 @@
+.h2 {
+  display: none;
+}
+
+.h2.show {
+  display: block;
+}
+.x {
+  position: relative;
+  float: right;
+  display: inline-block;
+  *display: inline;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.x3:after {
+  content: "\00d7";
+  font-size: 30pt;
+  line-height: 35px;
+}
