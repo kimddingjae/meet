@@ -42,12 +42,13 @@ x.addEventListener("click", () => {
 });
 
 const showImg = () => {
-  $(".link").attr("src", "./img/" + result + ".jpg");
+  window.href = "./img/" + result + ".jpg";
+  // $(".link").attr("src", "./img/" + result + ".jpg");
 
-  modal.classList.toggle("show");
-  if (modal.classList.contains("show")) {
-    body.style.overflow = "hidden";
-  }
+  // modal.classList.toggle("show");
+  // if (modal.classList.contains("show")) {
+  //   body.style.overflow = "hidden";
+  // }
 };
 
 modal.addEventListener("click", (event) => {
