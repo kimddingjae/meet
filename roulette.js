@@ -6,6 +6,7 @@ const modal = document.querySelector(".modal");
 const link = document.querySelector(".link");
 const x = document.querySelector(".x");
 let result = "";
+let cnt = 0;
 
 const product = [
   "도오",
@@ -59,12 +60,16 @@ modal.addEventListener("click", (event) => {
 });
 
 const makeChk = () => {
+  var br = "";
   for (var value of product) {
+    if (cnt == 4) br = "</br>";
+    else br = "";
     $("#chk")
       .append(
         `<input type="checkbox" id="${value}" name="chk" checked=true value="${value}">`
       )
-      .append(`<label for="${value}">${value}</label></div>`);
+      .append(`<label for="${value}">${value}</label></div>` + br);
+    cnt++;
   }
 };
 
