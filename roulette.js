@@ -125,9 +125,6 @@ const rotate = () => {
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
 
-    console.log(chkArr.length - 1);
-    console.log(ran);
-
     if (chkArr.length >= 3 && chkArr.length <= 6) {
       if (ran == chkArr.length - 1) {
         ran = 0;
@@ -137,10 +134,6 @@ const rotate = () => {
     }
 
     result = chkArr[ran];
-
-    console.log(chkArr);
-    console.log(ran);
-    console.log(result);
 
     setTimeout(() => showImg(), 2000);
   }, 1);
