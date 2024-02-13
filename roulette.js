@@ -98,8 +98,8 @@ const newMake = () => {
     ctx.save();
 
     ctx.translate(
-      cw + Math.cos(angle) * (cw - 43),
-      ch + Math.sin(angle) * (ch - 43)
+      cw + Math.cos(angle) * (cw - 50),
+      ch + Math.sin(angle) * (ch - 50)
     );
 
     ctx.rotate(angle + Math.PI / 2);
@@ -117,14 +117,31 @@ const rotate = () => {
   $c.style.transition = `initial`;
 
   setTimeout(() => {
-    const ran = Math.floor(Math.random() * chkArr.length);
+    let ran = Math.floor(Math.random() * chkArr.length);
 
     const arc = 360 / chkArr.length;
     const rotate = ran * arc + 3600 + arc * 3 - arc / 4;
 
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
+
+    console.log(chkArr.length - 1);
+    console.log(ran);
+
+    if (chkArr.length >= 3 && chkArr.length <= 6) {
+      if (ran == chkArr.length - 1) {
+        ran = 0;
+      } else {
+        ran += 1;
+      }
+    }
+
     result = chkArr[ran];
+
+    console.log(chkArr);
+    console.log(ran);
+    console.log(result);
+
     setTimeout(() => showImg(), 2000);
   }, 1);
 };
