@@ -118,7 +118,7 @@ const rotate = () => {
 
   setTimeout(() => {
     let ran = Math.floor(Math.random() * chkArr.length);
-    ran = 3
+    
     const arc = 360 / chkArr.length;
     const rotate = ran * arc + 3600 + arc * 3 - arc / 4;
 
