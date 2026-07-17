@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,99 +34,47 @@
     ></script>
 
     <title>장부</title>
-    <style>
-      #a {
-        text-align: center;
-        width: 100%;
-        overflow: hidden;
-        height: 640px;
-      }
-
-      [class*="col"] {
-        border: 1px solid black;
-        text-align: center;
-      }
-      table {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      table td,
-      table th {
-        overflow: hidden;
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
-      table tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-      table tr:hover {
-        background-color: #ddd;
-      }
-
-      table th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #40d0f0;
-        color: white;
-      }
-
-      #h {
-        display: block;
-      }
-
-      #j {
-        display: none;
-      }
-    </style>
   </head>
 
-  <body>
+  <body class="sheet-page">
     <div class="menu">
-      <nav class="clearfix" style="height:100%">
+      <nav class="clearfix" style="height: 100%">
         <ul class="clearfix">
           <li><a href="sheet.html">장부</a></li>
           <li><a href="index.html">달력</a></li>
           <li><a href="photo.html">사진들</a></li>
           <li><button class="btn-open-popup">📞</button></li>
         </ul>
-
-        
       </nav>
     </div>
 
-    <div class="container" id="main">
-      <div class="container" id="sub">
-        <select id="combo" onchange="yearChange()"></select>
-        <input value="카카오뱅크 3333-22-0492563" style="border: none;font-size: large" readonly="true">
-      </div>
-    </div>
+    <main class="ledger">
+      <header class="ledger-toolbar">
+        <select id="combo" onchange="yearChange()" aria-label="연도 선택"></select>
+        <input
+          class="ledger-account"
+          value="카카오뱅크 3333-22-0492563"
+          size="25"
+          readonly
+          aria-label="입금 계좌"
+          onclick="this.select()"
+          onfocus="this.select()"
+        />
+        <div class="ledger-carryover" id="carryover" hidden>
+          <span class="ledger-carryover-label" id="carryoverLabel">이월 금액</span>
+          <span class="ledger-carryover-value" id="carryoverValue"></span>
+        </div>
+      </header>
 
-    <!--
-    <div class="container">
-      <select id="combo" onchange="yearChange()"></select>
-      <h5 id="h" style="text-align: center">카카오뱅크 3333-22-0492563</h5>
-      <h1 id="j" style="text-align: center">카카오뱅크 3333-22-0492563</h1>
-    </div>
-    -->
-    
-    <div
-      id="container"
-      class="container"
-      style="text-align: left; overflow: auto"
-    >
-      <!-- <table class="output"></table> -->
-      <script src="sheet.js"></script>
-    </div>
+      <div id="container" class="container ledger-table-wrap">
+        <script src="sheet.js"></script>
+      </div>
+      <div class="ledger-summary" id="ledgerSummary" hidden></div>
+    </main>
 
     <div class="modal">
       <div class="modal_body">
-        <iframe
-          class="link"
-          src="tels.html"
-        ></iframe>
+        <iframe class="link" src="tels.html"></iframe>
         <script src="modal.js"></script>
       </div>
     </div>

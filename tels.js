@@ -78,21 +78,19 @@ function init() {
 function processRows(json) {
   json.forEach((row) => {
     const tr = document.createElement("tr");
-
     const keys = Object.keys(row);
-   
+
     keys.forEach((key) => {
-      
       const td = document.createElement("td");
-      td.style.border = "5px";
       td.textContent = row[key];
-      if(key=="번호"){
-        td.style.cursor = "pointer";
-        td.onclick = function(){
-          document.location.href='tel:' + row[key];
-        }        
+
+      if (key == "번호") {
+        td.classList.add("is-phone");
+        td.onclick = function () {
+          document.location.href = "tel:" + row[key];
+        };
       }
-      
+
       tr.appendChild(td);
     });
     output.appendChild(tr);

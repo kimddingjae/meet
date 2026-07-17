@@ -27,11 +27,13 @@
 
   text-align: center;
 
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  background: linear-gradient(165deg, #f7fbfe 0%, #eef5fb 50%, #e5f0f9 100%);
+  border: 1px solid #d7e6f2;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(90, 150, 200, 0.18);
 
   transform: translateX(-50%) translateY(-50%);
+  overflow: hidden;
 }
 #a {
   text-align: center;
